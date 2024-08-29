@@ -12,5 +12,3 @@ obj.getAllMoviesByParam(params).then(res =>{
 }).catch(err =>{
     console.log(err);
 })
-
-

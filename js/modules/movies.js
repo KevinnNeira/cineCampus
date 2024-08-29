@@ -17,4 +17,17 @@ module.exports = class product extends connect {
         } catch (error) {
             console.error("Error al buscar el dato:", error);
         }
-    }
+    async getAllMoviesByParam(params){
+        await this.open();
+        this.collectionMovie = this.db.collection("peliculas");
+        let res = await this.collectionMovie.find(params.filter).project(params.project).toArray();
+        if (res.acknowledged) {
+            console.log("¡ Consulta exitosa !");
+        } else {
+            console.log("Hubo un problema al hacer la consulta.");
+        }
+         return res;
+    } catch (error) {
+        console.error("Error al buscar el dato:", error);
+        }
+    } 

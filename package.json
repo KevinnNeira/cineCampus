@@ -1,7 +1,6 @@
 {
   "name": "cinecampus",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "type": "commonjs",
   "scripts": {
@@ -12,5 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "mongodb": "^6.8.0"
-  }
+  },
+  "description": ""
 }

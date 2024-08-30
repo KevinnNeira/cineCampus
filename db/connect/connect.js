@@ -26,10 +26,4 @@ module.exports = class Connect {
             this.connection = null;
         }
     }
-
-    close() {
-        if (this.connection) {
-            this.connection.close().catch(error => console.error("Error al cerrar la conexión a MongoDB:", error.message));
-        }
-    }
 };

@@ -1,4 +1,4 @@
-const { log } = require('console');
+const { log, group } = require('console');
 const connect = require('../../db/connect/connect');
 module.exports = class boletas extends connect {
     collectionTicket;
@@ -80,7 +80,28 @@ async buyTickets() {
         // Capturar y registrar cualquier error que ocurra durante el proceso
         console.error("Error al comprar el ticket:", error); 
         throw error;
+        }   
     }
-}
-
+    async checkSeatAvailability(){
+        await this.open();
+        this.collection = this.db.collection("funciones")
+        let res = await this.collection.aggregate([
+            {
+                $unwind: "$asientos"
+            }, 
+            {
+                $match: {
+                    "asientos.estado": "Libre"
+                }
+            },
+            {
+                $group: {
+                    _id: "$_id",
+                    asientos_libres: {
+                        $push: "$asiento.estado"
+                    }
+                }
+            }
+        ])
+    }
 }

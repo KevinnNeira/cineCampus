@@ -122,7 +122,7 @@ async checkSeatAvailability() {
                 asientos_libres: {
                     $push: "$asientos.asiento" // Agrega el número de asiento al array asientos_libres
                 },
-                filas: {
+                fila_asiento_libre: {
                     $push: "$asientos.fila" // Agrega la fila al array filas
                 }
             }

@@ -78,3 +78,20 @@ obj.buyTickets().then(res =>{
     console.log(err);
 })
 ```
+
+- **API para Verificar Disponibilidad de Asientos:** Permitir la consulta de la disponibilidad de asientos en una sala para una proyección específica.
+
+    **Nota:**  Todos los asientos que muestre son los que se encuntran disponibles junto con su respectiva fila
+
+```javascript
+let ticket = require('./js/modules/boletas')
+
+const {ObjectId} = require ('mongodb')
+
+let obj = new ticket();
+obj.checkSeatAvailability().then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```

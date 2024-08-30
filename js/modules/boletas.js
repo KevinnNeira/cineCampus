@@ -82,26 +82,31 @@ async buyTickets() {
         throw error;
         }   
     }
-    async checkSeatAvailability(){
+    async checkSeatAvailability() {
         await this.open();
-        this.collection = this.db.collection("funciones")
-        let res = await this.collection.aggregate([
+        this.collection = this.db.collection("funciones");
+    
+        const res = await this.collection.aggregate([
             {
-                $unwind: "$asientos"
-            }, 
+                $unwind: "$asientos" // Descompone el array de asientos
+            },
             {
                 $match: {
-                    "asientos.estado": "Libre"
+                    "asientos.estado": "Libre" // Filtra solo los asientos que están en estado 'Libre'
                 }
             },
             {
                 $group: {
                     _id: "$_id",
                     asientos_libres: {
-                        $push: "$asiento.estado"
+                        $push:  "$asientos.asiento",
+                    },
+                    filas: {
+                         $push: "$asientos.fila"
                     }
                 }
             }
-        ])
+        ]).toArray();    
+        return res;
     }
 }

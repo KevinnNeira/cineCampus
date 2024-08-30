@@ -82,31 +82,53 @@ async buyTickets() {
         throw error;
         }   
     }
-    async checkSeatAvailability() {
-        await this.open();
-        this.collection = this.db.collection("funciones");
-    
-        const res = await this.collection.aggregate([
-            {
-                $unwind: "$asientos" // Descompone el array de asientos
-            },
-            {
-                $match: {
-                    "asientos.estado": "Libre" // Filtra solo los asientos que están en estado 'Libre'
-                }
-            },
-            {
-                $group: {
-                    _id: "$_id",
-                    asientos_libres: {
-                        $push:  "$asientos.asiento",
-                    },
-                    filas: {
-                         $push: "$asientos.fila"
-                    }
+    /**
+ * Verifica la disponibilidad de asientos para las funciones de cine.
+ * 
+ * @async
+ * @function
+ * @returns {Promise<Array>} - Una promesa que se resuelve en un array de objetos. Cada objeto representa una función de cine 
+ *                             e incluye los asientos libres y las filas correspondientes.
+ * 
+ * @throws {Error} - Lanza un error si ocurre un problema al conectar con la base de datos o al ejecutar la consulta.
+ * 
+ * @description
+ * Esta función realiza las siguientes acciones:
+ * 
+ * 1. **Abrir Conexión a la Base de Datos**: Establece una conexión con la base de datos MongoDB.
+ * 2. **Obtener Referencia a la Colección `funciones`**: Se obtiene la referencia a la colección `funciones`.
+ * 3. **Descomponer Array de Asientos**: Utiliza `$unwind` para descomponer el array de asientos en documentos individuales.
+ * 4. **Filtrar Asientos Disponibles**: Filtra los asientos que están en estado `Libre` utilizando `$match`.
+ * 5. **Agrupar los Resultados**: Agrupa los resultados por función, creando un array de asientos libres y filas correspondientes para cada función.
+ * 6. **Retornar la Disponibilidad de Asientos**: Devuelve un array con la disponibilidad de asientos y sus respectivas filas para cada función.
+ *
+ */
+async checkSeatAvailability() {
+    await this.open();
+    this.collection = this.db.collection("funciones");
+
+    const res = await this.collection.aggregate([
+        {
+            $unwind: "$asientos" // Descompone el array de asientos
+        },
+        {
+            $match: {
+                "asientos.estado": "Libre" // Filtra solo los asientos que están en estado 'Libre'
+            }
+        },
+        {
+            $group: {
+                _id: "$_id",
+                asientos_libres: {
+                    $push: "$asientos.asiento" // Agrega el número de asiento al array asientos_libres
+                },
+                filas: {
+                    $push: "$asientos.fila" // Agrega la fila al array filas
                 }
             }
-        ]).toArray();    
-        return res;
-    }
+        }
+    ]).toArray();    
+    return res;
+}
+
 }

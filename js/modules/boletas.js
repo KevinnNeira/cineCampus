@@ -128,7 +128,7 @@ async checkSeatAvailability() {
             }
         }
     ]).toArray();    
-    return res;
+    return ("Asientos disponibles", res)
 }
 
 }

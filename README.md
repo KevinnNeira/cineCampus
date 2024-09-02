@@ -136,3 +136,23 @@ const Reservation = require('./js/modules/reservas');
     }
 })();
 ```
+
+### 4. Descuentos y Tarjetas VIP
+
+- **API para Aplicar Descuentos:** Permitir la aplicación de descuentos en la compra de boletos para usuarios con tarjeta VIP.
+- **API para Verificar Tarjeta VIP:** Permitir la verificación de la validez de una tarjeta VIP durante el proceso de compra.
+
+    **Nota:** En _id_usuario ingrese el id del usuario que desee validar 
+
+```javascript
+let discounts = require('./js/modules/descuentosTarjetas')
+
+let obj = new discounts();
+let _id_usuario = new ObjectId('66d07e58b06d8dfb1942969c')
+
+obj.applyDiscounts(_id_usuario).then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```

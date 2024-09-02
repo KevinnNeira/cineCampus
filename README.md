@@ -95,3 +95,44 @@ obj.checkSeatAvailability().then(res =>{
     console.log(err);
 })
 ```
+
+### 3. Asignación de Asientos
+
+- **API para Reservar Asientos:** Permitir la selección y reserva de asientos para una proyección específica.
+
+    **Nota:**  Asegurese de estar pasando bien los parametros
+
+```javascript
+let reservation = require('./js/modules/reservas');
+let obj = new reservation();
+
+let pelicula_id = "66d05a83b06d8dfb19429687";
+let fecha = "1970-01-04T00:00:00.001Z";
+let hora_inicio = "11:00:00";
+let asientosSeleccionados = [20];
+
+obj.reserveSeats(pelicula_id, fecha, hora_inicio, asientosSeleccionados).then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);
+    });
+```
+ 
+ - **API para Cancelar Reserva de Asientos:** Permitir la cancelación de una reserva de asiento ya realizada.
+
+    **Nota:**  Asegurese de que el estado del asiento se encuentre reservado para poder cancelar la reserva
+
+```javascript
+const Reservation = require('./js/modules/reservas');
+(async () => {
+    try {
+        let reservation = new Reservation();
+        const pelicula_id = '66d05a83b06d8dfb19429687';
+        const asientoNumero = 20;
+        let result = await reservation.cancelSeatReservation(pelicula_id, asientoNumero);
+        console.log(result);
+    } catch (error) {
+        console.error("Error al cancelar la reserva:", error);
+    }
+})();
+```

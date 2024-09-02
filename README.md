@@ -61,4 +61,37 @@ obj.getAllMoviesByParam(params).then(res =>{
     console.log(err);
 })
 ```
+### 2. Compra de Boletos
 
+- **API para Comprar Boletos:**  Permitir la compra de boletos para una película específica, incluyendo la selección de la fecha y la hora de la proyección.
+
+    **Nota:**  Verifique que el estado del asiento en la base de datos se encuentre en "Libre".
+
+```javascript
+let ticket = require('./js/modules/boletas')
+const {ObjectId} = require ('mongodb')
+
+let obj = new ticket();
+obj.buyTickets().then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```
+
+- **API para Verificar Disponibilidad de Asientos:** Permitir la consulta de la disponibilidad de asientos en una sala para una proyección específica.
+
+    **Nota:**  Todos los asientos que muestre son los que se encuntran disponibles junto con su respectiva fila
+
+```javascript
+let ticket = require('./js/modules/boletas')
+
+const {ObjectId} = require ('mongodb')
+
+let obj = new ticket();
+obj.checkSeatAvailability().then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```

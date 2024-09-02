@@ -22,8 +22,9 @@ module.exports = class user extends connect {
 }
     async getInfoUsers(){
         await this.open();
-        this.collectionUsers = this.db.collectionUsers("usuarios")
-        let res = await this.collectionUsers.find({}).project({}).toArray();
+        this.collectionUsers = this.db.collection("usuarios")
+        let res = await this.collectionUsers.find({}).project({nombre: 1, tipo_tarjeta: 1}).toArray();
+        return res
     }
     async updateUsers(){
         await this.open();

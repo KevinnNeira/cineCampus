@@ -20,7 +20,7 @@ let insertUser = {
     tipo_tarjeta: "Estandar"
 }
 
-obj.postUser(insertUser).then(res =>{
+obj.getInfoUsers().then(res =>{
     console.log(res);
 }).catch(err =>{
     console.log(err);

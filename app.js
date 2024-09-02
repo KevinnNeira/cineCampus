@@ -20,7 +20,17 @@ let insertUser = {
     tipo_tarjeta: "Estandar"
 }
 
-obj.getInfoUsers().then(res =>{
+let filter = new ObjectId('66d07e58b06d8dfb194296a2')
+let updateUser = {
+    $set: {
+    nombre: "Santiago Ayala",
+    Nro_ientificacion: 4114341414,
+    correo: "nndnnnwiiw@adddieed.com",
+    tipo_tarjeta: "Vip"
+    }
+}
+
+obj.updateUsers({_id:filter}, updateUser).then(res =>{
     console.log(res);
 }).catch(err =>{
     console.log(err);

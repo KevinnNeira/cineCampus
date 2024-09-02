@@ -26,10 +26,20 @@ module.exports = class user extends connect {
         let res = await this.collectionUsers.find({}).project({nombre: 1, tipo_tarjeta: 1}).toArray();
         return res
     }
-    async updateUsers(){
+    async updateUsers(filter, updateUser){
+        try{
         await this.open();
-        this.collectionUsers = this.db.collectionUsers("usuarios");
-        let res = await this.collectionUsers.updateOne({});
+        this.collectionUsers = this.db.collection("usuarios");
+        let res = await this.collectionUsers.updateOne(filter, updateUser);
+        if (res.acknowledged) {
+            console.log("El usuario se actualizar correctamente.");
+        } else {
+            console.log("Hubo un problema al actualizazo el Usuario.");
+        }
+        return res;
+    } catch (error) {
+        console.error("Error al actualizar el usuario:", error);
+        }
     }
     async getRolUsers(){
         await this.open();

@@ -22,7 +22,8 @@ module.exports = class user extends connect {
     }
     async getRolUsers(){
         await this.open();
-        this.connection = this.db.collectionUsers("usuarios");
-        let res = await this.collectionUsers.find({}).project({}).toArray();
+        this.collectionUsers = this.db.collection("usuarios");
+        let res = await this.collectionUsers.find({tipo_tarjeta: "Vip"}).project({nombre: 1, tipo_tarjeta: 1}).toArray();
+        return res
     }
 }

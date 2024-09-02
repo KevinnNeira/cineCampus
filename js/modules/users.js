@@ -5,11 +5,21 @@ module.exports = class user extends connect {
     constructor(){
         super();
     }
-    async postUser() {
+    async postUser(insertUser) {
+        try {         
         await this.open();
-        this.collectionUsers = this.db.collectionUsers("usuarios")
-        let res = await this.collectionUsers.createUser({})
+        this.collectionUsers = this.db.collection("usuarios")
+        let res = await this.collectionUsers.insertOne(insertUser)
+        if (res.acknowledged) {
+            console.log("El usuario se insertó correctamente.");
+        } else {
+            console.log("Hubo un problema al insertar el Usuario.");
+        }
+        return res;
+    } catch (error) {
+        console.error("Error al insertar el usuario:", error);
     }
+}
     async getInfoUsers(){
         await this.open();
         this.collectionUsers = this.db.collectionUsers("usuarios")

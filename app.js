@@ -12,9 +12,15 @@ let _id_usuario = new ObjectId('66d07e58b06d8dfb1942969c')
 
 
 let obj = new user();
+let insertUser = {
+    _id: new ObjectId('66d07e58b06d8dfb194296a2'),
+    nombre: "Santiago Ayala",
+    Nro_ientificacion: 4114341414,
+    correo: "nndnnnwiiw@adddieed.com",
+    tipo_tarjeta: "Estandar"
+}
 
-
-obj.getRolUsers().then(res =>{
+obj.postUser(insertUser).then(res =>{
     console.log(res);
 }).catch(err =>{
     console.log(err);

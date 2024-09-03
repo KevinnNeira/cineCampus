@@ -156,3 +156,70 @@ obj.applyDiscounts(_id_usuario).then(res =>{
     console.log(err);
 })
 ```
+### 5. Roles Definidos
+
+- **Administrador:** Tiene permisos completos para gestionar el sistema, incluyendo la venta de boletos en el lugar físico. Los administradores no están involucrados en las compras en línea realizadas por los usuarios.
+- **Usuario Estándar:** Puede comprar boletos en línea sin la intervención del administrador.
+- **Usuario VIP:** Puede comprar boletos en línea con descuentos aplicables para titulares de tarjetas VIP.
+
+- **API para Crear Usuario:** Permitir la creación de nuevos usuarios en el sistema, asignando roles y privilegios específicos (usuario estándar, usuario VIP o administrador).
+
+```javascript
+let user = require('./js/modules/users')
+let obj = new user();
+let insertUser = {
+    _id: new ObjectId('66d07e58b06d8dfb194296a2'),
+    nombre: "Santiago Ayala",
+    Nro_ientificacion: 4114341414,
+    correo: "nndnnnwiiw@adddieed.com",
+    tipo_tarjeta: "Estandar"
+}
+
+obj.updateUsers(insertUser).then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```
+- **API para Obtener Detalles de Usuario:** Permitir la consulta de información detallada sobre un usuario, incluyendo su rol y estado de tarjeta VIP.
+
+```javascript
+let user = require('./js/modules/users')
+let obj = new user();
+obj.getInfoUsers().then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```
+- **API para Actualizar Rol de Usuario:** Permitir la actualización del rol de un usuario (por ejemplo, cambiar de usuario estándar a VIP, o viceversa).
+```javascript
+let user = require('./js/modules/users')
+let obj = new user();
+let filter = new ObjectId('66d07e58b06d8dfb194296a2')
+let updateUser = {
+    $set: {
+    nombre: "Santiago Ayala",
+    Nro_ientificacion: 4114341414,
+    correo: "nndnnnwiiw@adddieed.com",
+    tipo_tarjeta: "Vip"
+    }
+}
+
+obj.updateUsers({_id:filter}, updateUser).then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```
+- **API para Listar Usuarios:** Permitir la consulta de todos los usuarios del sistema, con la posibilidad de filtrar por rol (VIP, estándar o administrador).
+
+```javascript
+let user = require('./js/modules/users')
+let obj = new user();
+obj.getRolUsers().then(res =>{
+    console.log(res);
+}).catch(err =>{
+    console.log(err);
+})
+```

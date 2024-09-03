@@ -32,7 +32,7 @@ module.exports = class user extends connect {
         this.collectionUsers = this.db.collection("usuarios");
         let res = await this.collectionUsers.updateOne(filter, updateUser);
         if (res.acknowledged) {
-            console.log("El usuario se actualizar correctamente.");
+            console.log("El usuario se actualizo correctamente.");
         } else {
             console.log("Hubo un problema al actualizazo el Usuario.");
         }

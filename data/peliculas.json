@@ -1,0 +1,99 @@
+[{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429683"
+  },
+  "nombre": "El ultimo respiro",
+  "sinopsis": "En un mundo donde el aire se ha vuelto escaso, Alex lucha por sobrevivir y proteger a su hija. Descubre una conspiración que podría salvar a la humanidad, emprendiendo una misión contrarreloj antes de que se agote el último respiro.",
+  "duracion": "1 Hora",
+  "estados": "Preventa"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429684"
+  },
+  "nombre": "Ecos del Pasado",
+  "sinopsis": "Un arqueólogo descubre un misterioso artefacto que revela secretos de su familia. Mientras explora su historia, debe enfrentar oscuros peligros que acechan en las sombras.",
+  "duracion": "1 Hora 30 Minutos",
+  "estados": "Disponible"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429685"
+  },
+  "nombre": "Horizonte Perdido",
+  "sinopsis": "En un mundo post-apocalíptico, un grupo de sobrevivientes busca un refugio legendario más allá del desierto, enfrentando desafíos en cada paso.",
+  "duracion": "2 Horas",
+  "estados": "En Producción"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429686"
+  },
+  "nombre": "El Laberinto de Cristal",
+  "sinopsis": "Una detective entra en un laberinto de espejos para encontrar a un niño perdido, descubriendo que nada es lo que parece.",
+  "duracion": "1 Hora 20 Minutos",
+  "estados": "Retirado"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429687"
+  },
+  "nombre": "La Última Fortaleza",
+  "sinopsis": "En una tierra asediada, un joven príncipe debe defender su fortaleza del ataque de fuerzas oscuras mientras descubre la verdadera herencia de su familia.",
+  "duracion": "2 Horas 15 Minutos",
+  "estados": "Preventa"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429688"
+  },
+  "nombre": "Sombra de Luna",
+  "sinopsis": "Una astronauta se encuentra atrapada en una estación espacial abandonada, con solo un día para arreglar una falla antes de que el oxígeno se agote.",
+  "duracion": "1 Hora 10 Minutos",
+  "estados": "Disponible"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429689"
+  },
+  "nombre": "El Enigma del Faro",
+  "sinopsis": "Un faro misterioso en una isla aislada oculta secretos que un investigador intenta desvelar, mientras es perseguido por visiones de una tripulación desaparecida.",
+  "duracion": "1 Hora 40 Minutos",
+  "estados": "En Producción"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429690"
+  },
+  "nombre": "Reflejos de Ayer",
+  "sinopsis": "Tras un accidente, una mujer comienza a ver destellos de su pasado en los espejos, lo que la lleva a descubrir una verdad olvidada sobre su infancia.",
+  "duracion": "1 Hora 25 Minutos",
+  "estados": "Preventa"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429691"
+  },
+  "nombre": "Bajo el Manto de Nieve",
+  "sinopsis": "En una aldea cubierta de nieve eterna, un hombre busca a su esposa desaparecida, enfrentando fuerzas sobrenaturales en el camino.",
+  "duracion": "1 Hora 50 Minutos",
+  "estados": "Disponible"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429692"
+  },
+  "nombre": "Círculo de Fuego",
+  "sinopsis": "Durante un festival de fuego, un grupo de amigos accidentalmente desata un antiguo espíritu que amenaza con consumir la ciudad.",
+  "duracion": "1 Hora 35 Minutos",
+  "estados": "Retirado"
+},
+{
+  "_id": {
+    "$oid": "66d05a83b06d8dfb19429693"
+  },
+  "nombre": "El Eco del Silencio",
+  "sinopsis": "En una ciudad donde el sonido está prohibido, una joven músico intenta encontrar su voz y cambiar el destino de su pueblo.",
+  "duracion": "1 Hora 45 Minutos",
+  "estados": "En Producción"
+}]

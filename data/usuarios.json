@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "66d07e58b06d8dfb1942969c"
+  },
+  "nombre": "Kevin Neira",
+  "Nro_identificacion": 10002002,
+  "correo": "neiraacostakevin08@gmail.com",
+  "tipo_tarjeta": "Vip"
+},
+{
+  "_id": {
+    "$oid": "66d07e58b06d8dfb1942969d"
+  },
+  "nombre": "Laura Gómez",
+  "Nro_identificacion": 10003003,
+  "correo": "laura.gomez@example.com",
+  "tipo_tarjeta": "Estándar"
+},
+{
+  "_id": {
+    "$oid": "66d07e58b06d8dfb1942969e"
+  },
+  "nombre": "Miguel Sánchez",
+  "Nro_identificacion": 10004004,
+  "correo": "miguel.sanchez@example.com",
+  "tipo_tarjeta": "Vip"
+},
+{
+  "_id": {
+    "$oid": "66d07e58b06d8dfb1942969f"
+  },
+  "nombre": "Ana Torres",
+  "Nro_identificacion": 10005005,
+  "correo": "ana.torres@example.com",
+  "tipo_tarjeta": "Estándar"
+},
+{
+  "_id": {
+    "$oid": "66d07e58b06d8dfb194296a0"
+  },
+  "nombre": "Carlos Fernández",
+  "Nro_identificacion": 10006006,
+  "correo": "carlos.fernandez@example.com",
+  "tipo_tarjeta": "Vip"
+},
+{
+  "_id": {
+    "$oid": "66d07e58b06d8dfb194296a1"
+  },
+  "nombre": "Sofía Rodríguez",
+  "Nro_identificacion": 10007007,
+  "correo": "sofia.rodriguez@example.com",
+  "tipo_tarjeta": "Estándar"
+}]

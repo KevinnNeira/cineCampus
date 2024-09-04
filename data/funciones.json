@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "66cf1a5f2052736384fa8a7f"
+  },
+  "asientos": [
+    {
+      "asiento": 6,
+      "estado": "Ocupado",
+      "fila": "H",
+      "precio": 24000,
+      "tipo": "preferencial",
+      "lugar": "Sala 1"
+    }
+  ],
+  "pelicula_id": {
+    "$oid": "66d05a83b06d8dfb19429684"
+  },
+  "hora_inicio": "3:00:00",
+  "hora_fin": "4:45:30",
+  "fecha": {
+    "$date": "1970-01-01T00:00:00.001Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66cf1a5f2052736384fa8a80"
+  },
+  "asientos": [
+    {
+      "asiento": 1,
+      "estado": "Libre",
+      "fila": "A",
+      "precio": 30000,
+      "tipo": "general",
+      "lugar": "Sala 2"
+    },
+    {
+      "asiento": 2,
+      "estado": "Ocupado",
+      "fila": "A",
+      "precio": 30000,
+      "tipo": "general",
+      "lugar": "Sala 2"
+    }
+  ],
+  "pelicula_id": {
+    "$oid": "66d05a83b06d8dfb19429685"
+  },
+  "hora_inicio": "5:00:00",
+  "hora_fin": "7:15:30",
+  "fecha": {
+    "$date": "1970-01-02T00:00:00.001Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66cf1a5f2052736384fa8a81"
+  },
+  "asientos": [
+    {
+      "asiento": 10,
+      "estado": "Libre",
+      "fila": "B",
+      "precio": 22000,
+      "tipo": "general",
+      "lugar": "Sala 3"
+    },
+    {
+      "asiento": 11,
+      "estado": "Libre",
+      "fila": "B",
+      "precio": 22000,
+      "tipo": "general",
+      "lugar": "Sala 3"
+    }
+  ],
+  "pelicula_id": {
+    "$oid": "66d05a83b06d8dfb19429686"
+  },
+  "hora_inicio": "8:00:00",
+  "hora_fin": "10:15:30",
+  "fecha": {
+    "$date": "1970-01-03T00:00:00.001Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66cf1a5f2052736384fa8a82"
+  },
+  "asientos": [
+    {
+      "asiento": 20,
+      "estado": "Libre",
+      "fila": "C",
+      "precio": 26000,
+      "tipo": "preferencial",
+      "lugar": "Sala 4"
+    }
+  ],
+  "pelicula_id": {
+    "$oid": "66d05a83b06d8dfb19429687"
+  },
+  "hora_inicio": "11:00:00",
+  "hora_fin": "13:30:30",
+  "fecha": {
+    "$date": "1970-01-04T00:00:00.001Z"
+  }
+}]

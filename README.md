@@ -1,6 +1,34 @@
 # Cine Campus
 
+## Credenciales
 
+```
+Administrador
+
+MONGO_PROTOCOLO=mongodb://
+MONGO_USER=Administrador
+MONGO_PSW=campus2023
+MONGO_HOST=172.16.102.48
+MONGO_PORT=27017
+
+
+Usuario Estandar
+
+MONGO_PROTOCOLO=mongodb://
+MONGO_USER=usuarioEstandar
+MONGO_PSW=campus2023
+MONGO_HOST=172.16.102.48
+MONGO_PORT=27017
+
+
+Usuario Vip
+
+MONGO_PROTOCOLO=mongodb://
+MONGO_USER=usuarioVip
+MONGO_PSW=campus2023
+MONGO_HOST=172.16.102.48
+MONGO_PORT=27017
+```
 
 #### Objetivo
 

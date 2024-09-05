@@ -2,6 +2,7 @@ const { MongoClient } = require("mongodb");
 
 module.exports = class Connect {
     connection;
+    dbAdministrador;
     db;
     static instanceConnect;
 
@@ -21,6 +22,7 @@ module.exports = class Connect {
             this.connection = new MongoClient(uriCampus); 
             await this.connection.connect();
             this.db = this.connection.db('cineCampus');
+            this.dbAdministrador = this.connection.db("admin");
         } catch (error) {
             console.error("Error al conectarse a MongoDB:", error.message);
             this.connection = null;

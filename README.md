@@ -195,15 +195,17 @@ obj.applyDiscounts(_id_usuario).then(res =>{
 ```javascript
 let user = require('./js/modules/users')
 let obj = new user();
-let insertUser = {
-    _id: new ObjectId('66d07e58b06d8dfb194296a2'),
-    nombre: "Santiago Ayala",
-    Nro_ientificacion: 4114341414,
-    correo: "nndnnnwiiw@adddieed.com",
-    tipo_tarjeta: "Estandar"
-}
+let param = {
+    nombre: "Andres",
+    rol: 'readWrite',
+    Nro_identificacion: 252523235233,
+    correo: "angobeal777@gmail.com",
+    tipo_tarjeta: "Vip",
+    nick: "Gonzxx",
+    contraseña: "bichiru"
+};
 
-obj.updateUsers(insertUser).then(res =>{
+obj.postUser(param).then(res =>{
     console.log(res);
 }).catch(err =>{
     console.log(err);
@@ -224,13 +226,15 @@ obj.getInfoUsers().then(res =>{
 ```javascript
 let user = require('./js/modules/users')
 let obj = new user();
-let filter = new ObjectId('66d07e58b06d8dfb194296a2')
+let filter = new ObjectId('66d90698b1d6d9c131771f2c')
 let updateUser = {
     $set: {
-    nombre: "Santiago Ayala",
-    Nro_ientificacion: 4114341414,
-    correo: "nndnnnwiiw@adddieed.com",
-    tipo_tarjeta: "Vip"
+        nombre: "Andreaaas",
+        Nro_identificacion: 252523235233,
+        correo: "angobeal777@gmail.com",
+        tipo_tarjeta: "Vip",
+        nick: "Gonzxx",
+        contraseña: "bichiru"
     }
 }
 

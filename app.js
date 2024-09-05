@@ -13,13 +13,26 @@ let _id_usuario = new ObjectId('66d07e58b06d8dfb1942969c')
 
 let obj = new user();
 
-let filter = new ObjectId('66d07e58b06d8dfb194296a2')
+let param = {
+    nombre: "Andres",
+    rol: 'readWrite',
+    Nro_identificacion: 252523235233,
+    correo: "angobeal777@gmail.com",
+    tipo_tarjeta: "Vip",
+    nick: "Gonzxx",
+    contraseña: "bichiru"
+};
+
+
+let filter = new ObjectId('66d90698b1d6d9c131771f2c')
 let updateUser = {
     $set: {
-    nombre: "Santiago Ayala",
-    Nro_ientificacion: 4114341414,
-    correo: "nndnnnwiiw@adddieed.com",
-    tipo_tarjeta: "Vip"
+        nombre: "Andreaaas",
+        Nro_identificacion: 252523235233,
+        correo: "angobeal777@gmail.com",
+        tipo_tarjeta: "Vip",
+        nick: "Gonzxx",
+        contraseña: "bichiru"
     }
 }
 

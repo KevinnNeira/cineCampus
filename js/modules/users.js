@@ -13,34 +13,45 @@ module.exports = class user extends connect {
  * @returns {Object} res - Resultado de la operación de inserción, incluyendo el _id del nuevo usuario, un mensaje de éxito y las credenciales del usuario creado.
  * @throws {Error} - Lanza un error si la inserción o creación del usuario en el sistema de roles falla.
  */
-    async postUser(param) {
-        if (param) {
-            let rol = "";
-            let db = "cineCampus"
-            await this.open();
-            this.collection = this.db.collection('usuarios');
-            await this.dbAdministrador.command({
-                createUser: param.nick,
-                pwd: param.contraseña,
-                roles: [
-                    { role: param.rol, db: "cineCampus" }
-                ]
-            });
-            let res = await this.collection.insertOne({
-                nombre: param.nombre,
-                Nro_identificacion: param.Nro_identificacion,
-                correo: param.correo,
-                tipo_tarjeta: param.tipo_tarjeta,
-                contraseña: param.contraseña,
-                nick: param.nick
-            });
-            res.message = "Usuario añadido exitosamente";
-            res.credention = `${param.nick}:${param.contraseña}`
-            return res;
-        } else {
-            return { "error": "El tipo de usuario ingresado no existe" };
-        }
+ async postUser(param) {
+    if (param) {
+        let rol = "superAdminCine";  // Rol que asignarás al usuario
+        let db = "cineCampus";
+        
+        // Abre la conexión con la base de datos
+        await this.open();
+        
+        // Accede a la base de datos directamente para ejecutar el comando
+        await this.dbAdministrador.command({
+            createUser: param.nick,
+            pwd: param.contraseña,
+            roles: [
+                { role: rol, db: db }
+            ]
+        });
+        
+        // Define la colección 'usuarios'
+        this.dbAdministrador = this.db.collection('usuarios');
+        
+        // Inserta el nuevo usuario en la colección
+        let res = await this.dbAdministrador.insertOne({
+            nombre: param.nombre,
+            Nro_identificacion: param.Nro_identificacion,
+            correo: param.correo,
+            tipo_tarjeta: param.tipo_tarjeta,
+            contraseña: param.contraseña,
+            nick: param.nick
+        });
+        
+        // Devuelve el resultado con un mensaje de éxito
+        res.message = "Usuario añadido exitosamente";
+        res.credention = `${param.nick}:${param.contraseña}`;
+        
+        return res;
+    } else {
+        return { "error": "El tipo de usuario ingresado no existe" };
     }
+}
 /**
  * @function getInfoUsers
  * @description Obtiene la información básica (nombre y tipo de tarjeta) de todos los usuarios en la colección 'usuarios'.

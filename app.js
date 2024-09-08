@@ -15,12 +15,12 @@ let obj = new user();
 
 let param = {
     nombre: "Andres",
-    rol: 'readWrite',
+    rol: 'root',
     Nro_identificacion: 252523235233,
     correo: "angobeal777@gmail.com",
     tipo_tarjeta: "Vip",
-    nick: "Gonzxx",
-    contraseña: "bichiru"
+    nick: "gonzxx",
+    contraseña: "hola"
 };
 
 
@@ -36,7 +36,7 @@ let updateUser = {
     }
 }
 
-obj.updateUsers({_id:filter}, updateUser).then(res =>{
+obj.postUser(param).then(res =>{
     console.log(res);
 }).catch(err =>{
     console.log(err);

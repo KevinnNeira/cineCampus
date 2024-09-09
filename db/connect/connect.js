@@ -16,10 +16,10 @@ module.exports = class Connect {
         const uriUsuarios = `${process.env.MONGO_PROTOCOLO}${process.env.MONGO_USER}:${process.env.MONGO_PSW}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/admin`;
         const uriCampus = `${process.env.MONGO_PROTOCOLO}${process.env.MONGO_USER}:${process.env.MONGO_PSW}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`;
         const uriHome = `${process.env.MONGO_PROTOCOLO}${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`;
-        console.log(uriUsuarios)
+        console.log(uriCampus)
 
         try {
-            this.connection = new MongoClient(uriUsuarios); 
+            this.connection = new MongoClient(uriCampus); 
             await this.connection.connect();
             this.db = this.connection.db('cineCampus');
             this.dbAdministrador = this.connection.db("admin");

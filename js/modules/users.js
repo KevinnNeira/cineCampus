@@ -15,8 +15,8 @@ module.exports = class user extends connect {
  */
  async postUser(param) {
     if (param) {
-        let rol = "superAdminCine";  // Rol que asignarás al usuario
-        let db = "cineCampus";
+        let rol = "root";  // Rol que asignarás al usuario
+        let db = "admin";
         
         // Abre la conexión con la base de datos
         await this.open();

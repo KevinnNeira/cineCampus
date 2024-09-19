@@ -1,4 +1,4 @@
-const { connectMongodb } = require('../api/connect/connect')
+const { connectMongodb } = require('../connect/connect')
 const express = require('express')
 const { ObjectId } = require('mongodb')
 

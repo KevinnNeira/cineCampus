@@ -1,7 +1,13 @@
 import React from 'react'
 import star from '../../public/Star.svg'
+import { useNavigate } from 'react-router-dom'
 
 export const SignUp = () => {
+    const navigate = useNavigate();
+    const route = async (e) => {
+        e.preventDefault();
+        navigate('/signUp');
+    }
   return (
     <>
     <header>
@@ -12,7 +18,7 @@ export const SignUp = () => {
     <main>
         <section className="section__form" >
             <h1>Create account</h1>
-            <form action="" method="post" className="login" >
+            <form action="" method="post" className="login" onSubmit={route}>
                 <label for="">Username</label>
                 <input type="text" placeholder="Your username" />
                 <label for="">Email</label>
@@ -20,13 +26,12 @@ export const SignUp = () => {
                 <label for="">Password</label>
                 <input type="password" value="123456789" />
                 <span>I accept the terms and privacy policy</span>
-                <input type="submit" value="Log in" />
+                <div className='button'>
+                <button type="submit" className="link">Log in</button>
+                </div>
             </form>
         </section>
     </main>
-    <footer>
-        <p>Don’t have an account? <b>Sign up</b></p>
-    </footer>
     </>
   )
 }

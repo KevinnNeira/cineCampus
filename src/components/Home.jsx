@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Ilustration from '../../public/Illustration.svg'
 
 export const Home = () => {
+    
   return (
     <>
     <main>
@@ -15,8 +17,8 @@ export const Home = () => {
             </div>
         </section>
         <section className="section__button">
-            <a href="./views/log-In-1.html">Sign In</a>
-            <a href="./views/sign-Up-3.html">Create account</a>
+            <Link to="/login">Sign In</Link>
+            <Link to="/signup">Create account</Link>
         </section>
     </main>
     </>

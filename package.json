@@ -2,8 +2,9 @@
   "name": "reactlogin",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
+    "server": "node api/server/server",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",

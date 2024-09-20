@@ -39,5 +39,12 @@ user.put("/:id", express.json(), async(req, res)=>{
         res.status(400).send({message: "User not updated"})
     }
 })
+let config = { 
+    port: "5000",
+    host: "localhost"
+}
+user.listen(config, ()=>{
+    console.log(`http://localhost:5000`);
+})
 
 module.exports = user;

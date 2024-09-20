@@ -17,9 +17,9 @@ export const LogIn = () => {
             <h1>Log in</h1>
             <form action="" method="post" className="login">
                 <label for="">Email address</label>
-                <input type="email" value="helloworld@gmail.com"/>
+                <input type="email" />
                 <label for="">Password</label>
-                <input type="password" value="123456789"/>
+                <input type="password" />
                 <span>Forgot password?</span>
                 <input type="submit" value="Log in"/>
             </form>

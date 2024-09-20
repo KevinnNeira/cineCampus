@@ -1,6 +1,8 @@
 const { connectMongodb } = require('../connect/connect')
 const express = require('express')
+const cors = require('cors')
 const { ObjectId } = require('mongodb')
+
 
 const user = express();
 

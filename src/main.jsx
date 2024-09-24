@@ -6,6 +6,7 @@ import './styles/css/Home.css'
 import './styles/css/LogIn.css'
 import './styles/css/SignUp.css'
 import './styles/css/Crud.css'
+import './styles/css/HomeApp.css'
 
 ReactDom.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

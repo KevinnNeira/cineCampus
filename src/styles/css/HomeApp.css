@@ -1,0 +1,121 @@
+body{
+    background-color: black;
+}
+.profile__header{
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    margin-left: 5vw;
+    margin-top: 5vw;
+    margin-right: 5vw;
+    margin-bottom: 2.5vw;
+    align-items: center; 
+}
+#image__profile {
+    width: 12vw;
+    max-width: 60px;
+    border-radius: 50%;
+    height: 100%;
+}
+
+#welcome__title {
+    margin-left: 4vw;
+    font-size: 2vw;
+    margin-bottom: 1.5vw;
+    color: white;
+    line-height: 1.2;
+}
+
+#welcome__subtitle {
+    font-size: 4vw;
+    margin-left: 4vw;
+    color: white;
+    line-height: 1.2;
+}
+
+#image__bell{
+    margin-top: 1vw;
+}
+@media (max-width: 600px) {
+    #image__profile {
+        width: 55px;
+    }
+    #welcome__title {
+        font-size: 3.5vw;
+    }
+    #welcome__subtitle {
+        font-size: 3.5vw;
+    }
+    #image__bell{
+        width: 40px;
+    }
+}
+
+.search_bar{
+    margin: 0;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+#bar{
+    border: 1px solid white;
+    background-color: rgb(32, 32, 32);
+    border-radius: 2vw;
+    width: 100%;
+    padding: 14px;
+    padding-left: 13vw;
+    font-size: 3.9vw;
+}
+#image__zoom{
+    filter: invert();
+    position: absolute;
+    width: 4.4vw;
+    margin: 4.2vw;
+}
+
+.contain__title__flex{
+    display: flex;
+    align-items: center;
+    margin-left: 5vw;
+    height: 8vh;
+    margin-right: 5vw;
+}
+#title__flex{
+    margin-top: 1vh;
+    font-size: 4vw;
+    color: white;
+}
+.scrollcards{
+    border:  1px solid white;
+    overflow-x: auto;
+    margin-left: 2vh;
+    justify-content: center;
+    width: 92%;
+    height: 45vh;
+    align-items: center;
+    position: relative;
+    grid-template-columns: repeat(4,1fr);
+}
+#frontPage{
+    width: 100%;
+    height: 100%;
+}
+.allcards{
+    border: 1px solid red;
+    display: grid;
+    grid-auto-flow: column;
+}
+.cards{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 40vh;
+    margin: 3vw;
+    position: relative;
+    border-radius: 5vw;
+    overflow: hidden;
+}
+
+#title__movie{
+    color: red;
+    font-size: 2vw;
+}

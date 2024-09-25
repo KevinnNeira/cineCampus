@@ -73,6 +73,8 @@ export const Homme = () => {
             </div>
             <div className="containMovie">
             <strong id='titleMovie'>Smile</strong>
+            <p id='genreMovie'>Miedo</p>
+
               </div>
           </div>
           <div className="commingSoonMovie">
@@ -81,6 +83,8 @@ export const Homme = () => {
             </div>
               <div className="containMovie">
             <strong id='titleMovie'>No Digas Su Nombre</strong>
+            <p id='genreMovie'>Miedo</p>
+
               </div>
           </div>
           <div className="commingSoonMovie">
@@ -89,6 +93,7 @@ export const Homme = () => {
             </div>
               <div className="containMovie">
             <strong id='titleMovie'>No Digas Su Nombre</strong>
+            <p id='genreMovie'>Miedo</p>
               </div>
           </div>
         </div>

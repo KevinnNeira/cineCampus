@@ -2,7 +2,7 @@
 .mainContainer{
     background-color: black;
     width: 100vw;
-    height: 152vh;
+    height: 143vh;
 }
 .profile__header{
     display: grid;
@@ -150,7 +150,7 @@
     flex-direction: row;
     margin-left: 5vw;
     margin-right: 5vw;
-    height: 18vh;
+    height: 15vh;
     border-radius: 15px;
     background-color: rgb( 32, 32, 32);
     margin-bottom: 5vw;
@@ -162,7 +162,7 @@
     color: white;
 }
 #titleMovie{
-    margin-top: 3vw;
+    margin-top: 5vw;
     font-size: 4vw;
     color: white;
 }
@@ -181,6 +181,11 @@
     border-radius: 13px;
     height: 80%;
     width: 80%;
+}
+#genreMovie{
+    color: white;
+    margin-top: 2vh;
+    font-size: 3vw;
 }
 .footer__nav{
     position: fixed;

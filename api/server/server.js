@@ -6,7 +6,7 @@ const { ObjectId } = require('mongodb')
 
 const user = express();
 
-user.get('/get', async(req,res)=>{
+user.get('/getMovie', async(req,res)=>{
     const collection = await connectMongodb();
     let { accion } = req.query;
     res.status(200).send(await collection.find().project().toArray())

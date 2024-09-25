@@ -4,7 +4,7 @@ exports.connectMongodb = async()=>{
     const url =  `mongodb://root:campus2023@localhost:27017/`;
     const usuario = new MongoClient(url)
     await usuario.connect();
-    const db = usuario.db('crudExpress');
+    const db = usuario.db('cineCampus');
     const collection = db.collection('usuarios')
     return collection
 }

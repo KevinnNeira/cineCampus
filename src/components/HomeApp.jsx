@@ -5,6 +5,11 @@ import lupa from '../../public/lupa.png';
 import smileMovie from '../../public/Cine-Club.jpg';
 import noDigasSuNombre from '../../public/portadaImagen.jpg';
 import menuPuntos from '../../public/menu.svg'
+import Home from '../../public/Frame 3.svg';
+import zoom from '../../public/Frame 4.svg';
+import ticket from '../../public/Frame 5.svg';
+import profile from '../../public/Frame 6.svg';
+
 
 const movies = [
   { id: 1, title: "Smile", genre: "Terror", image: smileMovie },
@@ -60,7 +65,50 @@ export const Homme = () => {
         <div className="menuContainer">
         <img id='menu' src={menuPuntos}/>
         </div>
+        <div className="commingSoonMoviesContainer">
+          <strong id='titleCommingSoon'>Comming soon</strong>
+          <div className="commingSoonMovie">
+            <div className="imageContainer">
+            <img id='frontPageCommingSoon' src={smileMovie}/>
+            </div>
+            <div className="containMovie">
+            <strong id='titleMovie'>Smile</strong>
+              </div>
+          </div>
+          <div className="commingSoonMovie">
+            <div className="imageContainer">
+            <img id='frontPageCommingSoon' src={noDigasSuNombre}/>
+            </div>
+              <div className="containMovie">
+            <strong id='titleMovie'>No Digas Su Nombre</strong>
+              </div>
+          </div>
+          <div className="commingSoonMovie">
+            <div className="imageContainer">
+            <img id='frontPageCommingSoon' src={noDigasSuNombre}/>
+            </div>
+              <div className="containMovie">
+            <strong id='titleMovie'>No Digas Su Nombre</strong>
+              </div>
+          </div>
+        </div>
       </div>
+      <footer className="footer__nav">
+        <ul className="footer__bar">
+            <li>
+                    <img src={Home}/>
+            </li>
+            <li>
+                    <img src={zoom}/>
+            </li>
+            <li>
+                    <img src={ticket}/>
+            </li>
+            <li>
+                    <img src={profile}/>
+            </li>
+        </ul>
+    </footer>
     </>
   );
 };

@@ -2,7 +2,7 @@
 .mainContainer{
     background-color: black;
     width: 100vw;
-    height: 100vh;
+    height: 152vh;
 }
 .profile__header{
     display: grid;
@@ -65,9 +65,9 @@
     background-color: rgb(32, 32, 32);
     border-radius: 2vw;
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     padding-left: 13vw;
-    font-size: 3.9vw;
+    font-size: 3.5vw;
 }
 #image__zoom{
     filter: invert();
@@ -93,7 +93,7 @@
     margin-left: 2vh;
     justify-content: center;
     width: 92%;
-    height: 53vh;
+    height: 51vh;
     align-items: center;
     position: relative;
     grid-template-columns: repeat(4,1fr);
@@ -110,7 +110,7 @@
     display: flex;
     flex-direction: column;
     width: 50vw;
-    height: 40vh;
+    height: 39vh;
     margin: 3vw;
     position: relative;
     border-radius: 5vw;
@@ -141,4 +141,74 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.commingSoonMoviesContainer{
+    overflow-y: auto;
+}
+.commingSoonMovie{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    height: 18vh;
+    border-radius: 15px;
+    background-color: rgb( 32, 32, 32);
+    margin-bottom: 5vw;
+    margin-top: 1vh;
+}
+#titleCommingSoon{
+    font-size: 3.5vw;
+    margin-left: 5vw;
+    color: white;
+}
+#titleMovie{
+    margin-top: 3vw;
+    font-size: 4vw;
+    color: white;
+}
+.containMovie{
+    display: flex;
+    flex-direction: column;
+}
+.imageContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 27vw;
+}
+#frontPageCommingSoon{
+    border-radius: 13px;
+    height: 80%;
+    width: 80%;
+}
+.footer__nav{
+    position: fixed;
+    left: 0;    
+    bottom: 1px;
+    width: 100%;
+    margin: 0;
+}
+.footer__bar{
+    background-color: rgb(32, 32, 32);
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 8px;
+}
+.footer__bar li{
+    list-style: none;
+    height: 40vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer__bar li a{
+    display: flex;
+}
+.footer__bar li a img{
+    object-fit: contain;
 }

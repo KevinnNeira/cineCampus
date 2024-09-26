@@ -7,23 +7,26 @@ import Home from '../../public/Frame 3.svg';
 import zoom from '../../public/Frame 4.svg';
 import ticket from '../../public/Frame 5.svg';
 import profile from '../../public/Frame 6.svg';
+import smileMovie from '../../public/Cine-Club.jpg';
+import noDigasSuNombre from '../../public/portadaImagen.jpg';
+
 
 export const Homme = () => {
-  const [movies, setMovies] = useState([]); // Estado para las películas
+  const [movies, setMovies] = useState([]);
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     fetch('http://localhost:3000/getMovie')
       .then(response => response.json())
-      .then(data => setMovies(data)) // Guardamos las películas en el estado
+      .then(data => setMovies(data))
       .catch(error => console.error('Error fetching movies:', error));
-  }, []); // Solo se ejecuta una vez al montar el componente
+  }, []);
 
   useEffect(() => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth / 2.4; // Centrar el scroll
+      scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth / 1.89;
     }
-  }, [movies]); // Se actualiza cuando cambien las películas
+  }, [movies]);
 
   return (
     <>
@@ -49,25 +52,44 @@ export const Homme = () => {
         </div>
         <div className="scrollcards" ref={scrollContainerRef}>
           <div className="allcards">
-            {movies.length > 0 ? (
-              movies.map(movie => (
-                <div className="infoContainer" key={movie._id}>
-                  <div className="cards">
-                    <img id='frontPage' src={movie.image} alt={movie.titulo} />
-                  </div>
-                  <strong id='title__movie'>{movie.nombre}</strong>
-                  <p id='genre'>{movie.estados}</p>
-                </div>
-              ))
-            ) : (
-              <p>No movies available</p>
-            )}
+          {movies.length > 0 ? (
+          movies.filter(movie => movie.estados === 'Disponible').map(movie => (
+            <div className="infoContainer" key={movie._id}>
+              <div className="cards">
+                <img id='frontPage' src={movie.portada} alt={movie.nombre} />
+              </div>
+              <strong id='title__movie'>{movie.nombre}</strong>
+              <p id='genre'>{movie.genero}</p>
+            </div>
+          ))
+          ) : (
+            <p>No movies available</p>
+          )}
           </div>
         </div>
         <div className="menuContainer">
           <img id='menu' src={menuPuntos} />
         </div>
-        {/* Aquí podrías hacer lo mismo para las películas próximas */}
+        <strong id='titleCommingSoon'>Comming soon</strong>
+        {movies.length > 0 ? (
+          movies.filter(movie => movie.estados === 'Preventa').map(movie => (
+        <div className="commingSoonMoviesContainer" key={movie._id}>
+          <div className="commingSoonMovie">
+            <div className="imageContainer">
+            <img id='frontPageCommingSoon' src={movie.portada}/>
+            </div>
+            <div className="containMovie">
+            <div className="containMovie">
+            <strong id='titleMovie'>{movie.nombre}</strong>
+            <p id='genreMovie'>{movie.genero}</p>
+              </div>
+              </div>
+          </div>
+        </div>
+        ))
+          ) : (
+            <p>No movies available</p>
+          )}
       </div>
       <footer className="footer__nav">
         <ul className="footer__bar">

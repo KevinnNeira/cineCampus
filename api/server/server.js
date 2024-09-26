@@ -1,3 +1,4 @@
+const {connectMongodb} = require('../connect/connect')
 const express = require('express');
 const cors = require('cors');
 const user = express();
@@ -9,12 +10,9 @@ user.use(cors({
 
 // Ruta para obtener películas
 user.get('/getMovie', async (req, res) => {
-  try {
-    const peliculas = await db.collection('peliculas').find({}).toArray();
-    res.json(peliculas);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener películas' });
-  }
+    const collection = await connectMongodb();
+    let { accion } = req.query;
+    res.status(200).send(await collection.find().project().toArray())
 });
 user.delete('/:id', async(req,res)=>{
     const collection = await connectMongodb();

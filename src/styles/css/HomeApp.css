@@ -2,7 +2,7 @@
 .mainContainer{
     background-color: black;
     width: 100vw;
-    height: 143vh;
+    height: 160vh;
 }
 .profile__header{
     display: grid;
@@ -109,7 +109,7 @@
 .cards{
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    width: 52vw;
     height: 39vh;
     margin: 3vw;
     position: relative;
@@ -127,7 +127,7 @@
 }
 #title__movie{
     color: white;
-    font-size: 5vw;
+    font-size: 4vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -153,7 +153,7 @@
     height: 15vh;
     border-radius: 15px;
     background-color: rgb( 32, 32, 32);
-    margin-bottom: 5vw;
+    margin-bottom: 3vw;
     margin-top: 1vh;
 }
 #titleCommingSoon{
@@ -183,7 +183,7 @@
     width: 80%;
 }
 #genreMovie{
-    color: white;
+    color: gray;
     margin-top: 2vh;
     font-size: 3vw;
 }

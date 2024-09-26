@@ -1,31 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import image__profile from '../../public/profileImage.svg';
 import campana from '../../public/Campana.svg';
 import lupa from '../../public/lupa.png';
-import smileMovie from '../../public/Cine-Club.jpg';
-import noDigasSuNombre from '../../public/portadaImagen.jpg';
-import menuPuntos from '../../public/menu.svg'
+import menuPuntos from '../../public/menu.svg';
 import Home from '../../public/Frame 3.svg';
 import zoom from '../../public/Frame 4.svg';
 import ticket from '../../public/Frame 5.svg';
 import profile from '../../public/Frame 6.svg';
 
-
-const movies = [
-  { id: 1, title: "Smile", genre: "Terror", image: smileMovie },
-  { id: 2, title: "No Digas Su Nombre", genre: "Terror", image: noDigasSuNombre },
-  { id: 3, title: "Smile", genre: "Terror", image: smileMovie },
-  { id: 4, title: "No Digas Su Nombre", genre: "Terror", image: noDigasSuNombre }
-];
-
 export const Homme = () => {
+  const [movies, setMovies] = useState([]); // Estado para las películas
   const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/getMovie')
+      .then(response => response.json())
+      .then(data => setMovies(data)) // Guardamos las películas en el estado
+      .catch(error => console.error('Error fetching movies:', error));
+  }, []); // Solo se ejecuta una vez al montar el componente
 
   useEffect(() => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth / 2.4; // Centrar el scroll
     }
-  }, []);
+  }, [movies]); // Se actualiza cuando cambien las películas
 
   return (
     <>
@@ -51,69 +49,42 @@ export const Homme = () => {
         </div>
         <div className="scrollcards" ref={scrollContainerRef}>
           <div className="allcards">
-            {movies.map(movie => (
-              <div className="infoContainer" key={movie.id}>
-                <div className="cards">
-                  <img id='frontPage' src={movie.image} alt={movie.title} />
+            {movies.length > 0 ? (
+              movies.map(movie => (
+                <div className="infoContainer" key={movie._id}>
+                  <div className="cards">
+                    <img id='frontPage' src={movie.image} alt={movie.titulo} />
+                  </div>
+                  <strong id='title__movie'>{movie.nombre}</strong>
+                  <p id='genre'>{movie.estados}</p>
                 </div>
-                <strong id='title__movie'>{movie.title}</strong>
-                <p id='genre'>{movie.genre}</p>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No movies available</p>
+            )}
           </div>
         </div>
         <div className="menuContainer">
-        <img id='menu' src={menuPuntos}/>
+          <img id='menu' src={menuPuntos} />
         </div>
-        <div className="commingSoonMoviesContainer">
-          <strong id='titleCommingSoon'>Comming soon</strong>
-          <div className="commingSoonMovie">
-            <div className="imageContainer">
-            <img id='frontPageCommingSoon' src={smileMovie}/>
-            </div>
-            <div className="containMovie">
-            <strong id='titleMovie'>Smile</strong>
-            <p id='genreMovie'>Miedo</p>
-
-              </div>
-          </div>
-          <div className="commingSoonMovie">
-            <div className="imageContainer">
-            <img id='frontPageCommingSoon' src={noDigasSuNombre}/>
-            </div>
-              <div className="containMovie">
-            <strong id='titleMovie'>No Digas Su Nombre</strong>
-            <p id='genreMovie'>Miedo</p>
-
-              </div>
-          </div>
-          <div className="commingSoonMovie">
-            <div className="imageContainer">
-            <img id='frontPageCommingSoon' src={noDigasSuNombre}/>
-            </div>
-              <div className="containMovie">
-            <strong id='titleMovie'>No Digas Su Nombre</strong>
-            <p id='genreMovie'>Miedo</p>
-              </div>
-          </div>
-        </div>
+        {/* Aquí podrías hacer lo mismo para las películas próximas */}
       </div>
       <footer className="footer__nav">
         <ul className="footer__bar">
-            <li>
-                    <img src={Home}/>
-            </li>
-            <li>
-                    <img src={zoom}/>
-            </li>
-            <li>
-                    <img src={ticket}/>
-            </li>
-            <li>
-                    <img src={profile}/>
-            </li>
+          <li>
+            <img src={Home} />
+          </li>
+          <li>
+            <img src={zoom} />
+          </li>
+          <li>
+            <img src={ticket} />
+          </li>
+          <li>
+            <img src={profile} />
+          </li>
         </ul>
-    </footer>
+      </footer>
     </>
   );
 };

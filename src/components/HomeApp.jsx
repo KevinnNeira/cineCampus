@@ -7,9 +7,6 @@ import Home from '../../public/Frame 3.svg';
 import zoom from '../../public/Frame 4.svg';
 import ticket from '../../public/Frame 5.svg';
 import profile from '../../public/Frame 6.svg';
-import smileMovie from '../../public/Cine-Club.jpg';
-import noDigasSuNombre from '../../public/portadaImagen.jpg';
-
 
 export const Homme = () => {
   const [movies, setMovies] = useState([]);

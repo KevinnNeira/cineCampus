@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from '../components/Home';
-import LogIn from '../components/LogIn';
-import SignUp from '../components/SignUp';
-import Crud from '../components/Crud';
+import {Home} from '../components/Home';
+import {LogIn} from '../components/LogIn';
+import {SignUp} from '../components/SignUp';
+import {Cinema} from '../components/Cinema';
 import { Homme } from '../components/HomeApp';
 
 export const AppRouter = () => {
@@ -11,8 +11,8 @@ export const AppRouter = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/logIn' element={<LogIn/>}/>
             <Route path='/signUp' element={<SignUp/>}/>
-            <Route path='/client' element={<Crud/>}/>
             <Route path='/homeapp'element={<Homme/>}/>
+            <Route path='/cinema' element={<Cinema/>}/>
         </Routes>
     )
 }

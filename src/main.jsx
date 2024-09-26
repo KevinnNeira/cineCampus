@@ -5,13 +5,13 @@ import { BrowserRouter } from 'react-router-dom'
 import './styles/css/Home.css'
 import './styles/css/LogIn.css'
 import './styles/css/SignUp.css'
-import './styles/css/Crud.css'
 import './styles/css/HomeApp.css'
+import './styles/css/Cinema.css'
 
 ReactDom.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
     <App/>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

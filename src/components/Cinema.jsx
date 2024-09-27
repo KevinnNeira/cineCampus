@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import flecha from '../../public/arrow-right.svg';
 import zoom from '../../public/Cine-Club.jpg';
 import menu from '../../public/more-vertical.svg'
+import reproduce from '../../public/Polygon 1.svg'
+import caster from '../../public/Ellipse 208.svg'
 
 export const Cinema = () => {
   return (
@@ -24,7 +26,7 @@ export const Cinema = () => {
         <div className="movie-card">
           <div className="movie-header">
             Puss in boots the last wish
-            <button className="trailer-button">Watch Trailer</button>
+            <button className="trailer-button"><img src={reproduce}/>Watch Trailer</button>
           </div>
           <div className="movie-genre">
             Action, Adventure
@@ -32,18 +34,45 @@ export const Cinema = () => {
           <div className="movie-description">
             Jake Sully and Ney'tiri have formed a family and are doing everything to stay together. However, they must leave their home and explore the regions of Pandora. When an ancient threat resurfaces, Jake must fight a difficult war against the humans.
           </div>
+          <strong id='titleCast'>Cast</strong>
+        </div>
           <div className="movie-cast">
-            <div className="cast-member">
-              <span>Antonio Banderas</span>
+          <div className="cast-member">
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+              <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
             </div>
             <div className="cast-member">
-              <span>Salma Hayek</span>
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
             </div>
             <div className="cast-member">
-              <span>Harvey Guillén</span>
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
+            </div>
+            <div className="cast-member">
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
+            </div>
+            <div className="cast-member">
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
             </div>
           </div>
-        </div>
         <strong id='titleCinemaPlace'>Cinema</strong>
         <div className="placesContainer">
           <div className="places">

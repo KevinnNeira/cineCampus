@@ -6,10 +6,10 @@
     color: #000;
 }
 
-.mainContainerCinema{
+.mainContainer{
     background-color: black;
     width: 100vw;
-    height: 120vh;
+    height: 100vh;
 }
 
 .container__header{
@@ -59,7 +59,6 @@
 }
 
 .imagecontainer{
-    border: 1px solid red;
     height: 30vh;
     margin-left: 4.5vw;
     margin-right: 4.5vw;
@@ -74,72 +73,115 @@
 }
 
 .movie-card {
-    padding: 20px;
-    margin-left: 4.5vw;
-    margin-right: 4.5vw;
-    border-radius: 8px;
+    margin-left: 7.5vw;
     width: 91%;
   }
   
-  .movie-header {
-    display: flex;
-    color: white;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .trailer-button {
-    display: flex;
-    flex-direction: row;
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 60px;
-    cursor: pointer;
-  }
-  
-  .movie-genre {
-    color: white;
-    margin-bottom: 10px;
-  }
-  
-  .movie-description {
-    color: white;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .movie-cast {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .cast-member {
-    text-align: center;
-  }
-  
-  .cast-member img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-bottom: 5px;
-  }
-  
-  #titleCinemaPlace{
-    font-size: 3.5vw;
-    margin-left: 5vw;
-    color: white;
+.movie-header {
+  display: flex;
+  color: white;
+  gap: 45px;
+  align-items: center;
+  font-size: 3.7vw;
+
 }
- .places{
-    display: flex;
-    flex-direction: row;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    height: 10vh;
-    border-radius: 15px;
-    background-color: rgb( 32, 32, 32);
-    margin-bottom: 3vw;
-    margin-top: 1vh;
+
+.trailer-button {
+  display: flex;
+  margin-top: 0.5vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  gap: 2vw;
+  color: white;
+  border-radius: 2vw;
+  border: none;
+  height: 3.2vh;
+  margin: 2vw;
+  font-size: 2vw;
+  width: 22vw;
+  cursor: pointer;
+}
+
+.movie-genre {
+  color: white;
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-description {
+  color: white;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.movie-cast {
+  display: flex;
+  width: 88%;
+  margin-left: 6vw;
+  margin-right: 6vw;
+  height: 10vh;
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+}
+
+.cast-member {
+  display: flex;
+  align-items: center;
+  width: 13vw;
+  justify-content: center;
+  height: 100%;
+}
+
+.cast-member img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+#titleCinemaPlace{
+  font-size: 3.5vw;
+  margin-left: 5.5vw;
+  color: white;
+}
+#titleCast{
+  font-size: 3.5vw;
+  color: white;
+}
+.places{
+  display: flex;
+  flex-direction: row;
+  margin-left: 6vw;
+  margin-right: 6vw;
+  height: 10vh;
+  border-radius: 15px;
+  background-color: rgb( 32, 32, 32);
+  margin-bottom: 3vw;
+  margin-top: 1vh;
+}
+
+#caster__image{
+  width: 10vw;
+}
+
+#name__caster{
+  color: white;
+  margin-left: 1vw;
+  font-size: 10px;
+}
+#character__casting{
+  color: gray;
+  margin-left: 1vw;
+  font-size: 9px;
+}
+.info__caster{
+  display: flex;
+  gap: 1vw;
+  width: 25vw;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
 }

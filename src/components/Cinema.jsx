@@ -21,6 +21,29 @@ export const Cinema = () => {
         <div className="imagecontainer">
         <img id='image__front__page' src={zoom}/>
         </div>
+        <div className="movie-card">
+          <div className="movie-header">
+            Puss in boots the last wish
+            <button className="trailer-button">Watch Trailer</button>
+          </div>
+          <div className="movie-genre">
+            Action, Adventure
+          </div>
+          <div className="movie-description">
+            Jake Sully and Ney'tiri have formed a family and are doing everything to stay together. However, they must leave their home and explore the regions of Pandora. When an ancient threat resurfaces, Jake must fight a difficult war against the humans.
+          </div>
+          <div className="movie-cast">
+            <div className="cast-member">
+              <span>Antonio Banderas</span>
+            </div>
+            <div className="cast-member">
+              <span>Salma Hayek</span>
+            </div>
+            <div className="cast-member">
+              <span>Harvey Guillén</span>
+            </div>
+          </div>
+        </div>
         </div>
     </>
   )

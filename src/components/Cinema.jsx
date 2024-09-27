@@ -44,6 +44,20 @@ export const Cinema = () => {
             </div>
           </div>
         </div>
+        <strong id='titleCinemaPlace'>Cinema</strong>
+        <div className="placesContainer">
+          <div className="places">
+            <div className="imageContainer">
+            <img id='frontPageCommingSoon' src={zoom}/>
+            </div>
+            <div className="containMovie">
+            <div className="containMovie">
+            <strong id='titleMovie'>Campuslands</strong>
+            <p id='genreMovie'>Zonza franca, torre </p>
+              </div>
+              </div>
+          </div>
+        </div>
         </div>
     </>
   )

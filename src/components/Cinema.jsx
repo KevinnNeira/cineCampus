@@ -79,15 +79,20 @@ export const Cinema = () => {
             <div className="imageContainer">
             <img id='frontPageCommingSoon' src={zoom}/>
             </div>
-            <div className="containMovie">
-            <div className="containMovie">
-            <strong id='titleMovie'>Campuslands</strong>
-            <p id='genreMovie'>Zonza franca, torre </p>
-              </div>
+            <div className="containPlace">
+            <strong id='placeName'>Campuslands</strong>
+            <p id='ubicationPlace'>Zonza franca, torre </p>
               </div>
           </div>
         </div>
         </div>
+        <footer className="footer__nav__cinema">
+        <ul className="footer__bar__cinema">
+          <li>
+            <strong id='title__footer'>Book now</strong>
+          </li>
+        </ul>
+      </footer>
     </>
   )
 }

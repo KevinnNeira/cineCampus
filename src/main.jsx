@@ -7,6 +7,7 @@ import './styles/css/LogIn.css'
 import './styles/css/SignUp.css'
 import './styles/css/HomeApp.css'
 import './styles/css/Cinema.css'
+import './styles/css/SeatChoose.css'
 
 ReactDom.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

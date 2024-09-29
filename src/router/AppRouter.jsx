@@ -5,6 +5,7 @@ import {SignUp} from '../components/SignUp';
 import {Cinema} from '../components/Cinema';
 import { Homme } from '../components/HomeApp';
 import { SeatBooking } from '../components/SeatChoose';
+import {TotalOrder} from '../components/OrderSummary'
 
 export const AppRouter = () => {
     return(
@@ -15,6 +16,7 @@ export const AppRouter = () => {
             <Route path='/homeapp'element={<Homme/>}/>
             <Route path='/cinema' element={<Cinema/>}/>
             <Route path='/SeatBooking' element={<SeatBooking/>}/>
+            <Route path='/order' element={<TotalOrder/>}/>
         </Routes>
     )
 }

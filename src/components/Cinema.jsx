@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import flecha from '../../public/arrow-right.svg';
 import zoom from '../../public/Cine-Club.jpg';
 import menu from '../../public/more-vertical.svg'
@@ -11,7 +11,9 @@ export const Cinema = () => {
     <div className='mainContainer'>
         <div className='container__header'>
           <div className="arrow__container">
+            <a href="/homeapp">
             <img id='arrow__image' src={flecha}/>
+            </a>
           </div>
           <div className="title__container">
             <strong id='title'>Cinema Selection</strong>
@@ -86,6 +88,7 @@ export const Cinema = () => {
           </div>
         </div>
         </div>
+        <a href="/SeatBooking">
         <footer className="footer__nav__cinema">
         <ul className="footer__bar__cinema">
           <li>
@@ -93,6 +96,7 @@ export const Cinema = () => {
           </li>
         </ul>
       </footer>
+        </a>
     </>
   )
 }

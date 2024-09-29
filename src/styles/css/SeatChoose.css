@@ -58,12 +58,13 @@
 }
 
 .ticket-price {
-  margin: 20px 0;
+  margin: 20px;
 }
 
 .ticket-price p {
   color: white;
-  font-size: 18px;
+  font-size: 19px;
+  margin-bottom: 1vh;
 }
 
 .ticket-price h5 {
@@ -75,12 +76,13 @@
   background-color: red;
   color: white;
   border: none;
-  margin-top: 2vh;
-  width: 90%;
+  margin-top: 4vh;
+  width: 100%;
+  height: 50px;
   padding: 15px 30px;
   font-size: 18px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .buy-button:hover {

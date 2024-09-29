@@ -26,8 +26,9 @@ export const SeatBooking = () => {
     <>
     <div className='container__header__seat'>
           <div className="arrow__container">
+          <a href="/cinema">
             <img id='arrow__image__seat' src={flecha}/>
-          </div>
+            </a>          </div>
           <div className="title__container">
             <strong id='title__seat'>Cinema Selection</strong>
             <img id='image__bar' src={bar}/>

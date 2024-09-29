@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-
+import flecha from '../../public/arrow-right.svg';
+import menu from '../../public/more-vertical.svg'
+import bar from '../../public/Group 18102.svg'
+  
 export const SeatBooking = () => {
   const [selectedSeat, setSelectedSeat] = useState(null);
   const [selectedDay, setSelectedDay] = useState('Fri 17');
@@ -20,12 +23,26 @@ export const SeatBooking = () => {
   };
 
   return (
+    <>
+    <div className='container__header__seat'>
+          <div className="arrow__container">
+            <img id='arrow__image__seat' src={flecha}/>
+          </div>
+          <div className="title__container">
+            <strong id='title__seat'>Cinema Selection</strong>
+            <img id='image__bar' src={bar}/>
+          </div>
+          <div className="menu_container">
+            <img id='image__menu__seat' src={menu}/>
+          </div>
+        </div>
     <div className="seat-booking">
       <SeatSelector seats={seats} reservedSeats={reservedSeats} selectedSeat={selectedSeat} onSeatClick={handleSeatClick} />
       <DateSelector selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
       <TimeSelector selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
       <TicketPrice price="$24.99" />
     </div>
+    </>
   );
 };
 const SeatSelector = ({ seats, reservedSeats, selectedSeat, onSeatClick }) => {
@@ -86,7 +103,7 @@ const TicketPrice = ({ price }) => {
   return (
     <div className="ticket-price">
       <p>Price</p>
-      <h2>{price}</h2>
+      <h5>{price}</h5>
       <button className="buy-button">Buy ticket</button>
     </div>
   );

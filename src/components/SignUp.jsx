@@ -16,7 +16,7 @@ export const SignUp = () => {
             Email: email,
             Password: password,
         };
-            const response = await fetch('http://localhost:3000/insertUser', { // Cambia la URL aquí
+            const response = await fetch('http://localhost:3000/insertUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,11 +27,11 @@ export const SignUp = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log('User created:', data);
-                navigate('/login'); // Redirige a otra página si el registro es exitoso
+                navigate('/login');
             } else {
                 const errorData = await response.json();
                 console.error('Error:', errorData.message);
-                alert(errorData.message); // Mostrar mensaje de error
+                alert(errorData.message);
             }
 
     };

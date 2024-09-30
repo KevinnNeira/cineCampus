@@ -10,30 +10,29 @@ export const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const userData = {
             Username: username,
             Email: email,
             Password: password,
         };
-            const response = await fetch('http://localhost:3000/insertUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userData),
-            });
+        const response = await fetch('http://localhost:3000/insertUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        });
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log('User created:', data);
-                navigate('/login');
-            } else {
-                const errorData = await response.json();
-                console.error('Error:', errorData.message);
-                alert(errorData.message);
-            }
-
+        if (response.ok) {
+            const data = await response.json();
+            console.log('User created:', data);
+            navigate('/login');
+        } else {
+            const errorData = await response.json();
+            console.error('Error:', errorData.message);
+            alert(errorData.message); // Considera usar un componente para mostrar errores
+        }
     };
 
     return (

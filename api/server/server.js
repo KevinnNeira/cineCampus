@@ -10,7 +10,8 @@ user.use(cors({
 
 // Ruta para obtener películas
 user.get('/getMovie', async (req, res) => {
-    const collection = await connectMongodb();
+    const db = await connectMongodb();
+    const collection = db.collection('peliculas')
     let { accion } = req.query;
     res.status(200).send(await collection.find().project().toArray())
 });
@@ -23,7 +24,8 @@ user.delete('/:id', async(req,res)=>{
         res.status(404).send({message: "User not found"})
     }
 })
-user.post('insertUser', express.json(), async (req, res) => {
+user.post('/insertUser', express.json(), async (req, res) => {
+    const db = await connectMongodb();
     const collection = db.collection('usuarios')
     const { Username, Email, Password } = req.body;
 

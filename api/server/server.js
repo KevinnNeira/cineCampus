@@ -49,12 +49,12 @@ user.post('/insertUser', express.json(), async (req, res) => {
 });
 
 module.exports = user;
-user.put("/:id", express.json(), async(req, res)=>{
-    const collection = await connectMongodb();
-    let data = req.body;
+user.get("/:_id", express.json(), async(req, res)=>{
+    const db = await connectMongodb();
+    const collection = db.collection('peliculas')
     let {id} = req.params;
     try{
-        res.status(201).send(await collection.updateOne({_id: new ObjectId(id)}, {$set: data}));
+        res.status(201).send(await collection.findOne({_id: new ObjectId(id)}, ));
     }catch(error){
         res.status(400).send({message: "User not updated"})
     }

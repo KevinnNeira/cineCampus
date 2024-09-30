@@ -7,8 +7,10 @@ import Home from '../../public/Frame 3.svg';
 import zoom from '../../public/Frame 4.svg';
 import ticket from '../../public/Frame 5.svg';
 import profile from '../../public/Frame 6.svg';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 export const Homme = () => {
+  const navigate = useNavigate(); // Initialize navigate
   const [movies, setMovies] = useState([]);
   const scrollContainerRef = useRef(null);
 
@@ -24,6 +26,10 @@ export const Homme = () => {
       scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth / 1.89;
     }
   }, [movies]);
+
+  const handleMovieClick = (movie) => {
+    navigate(`/cinema/${movie._id}`, { state: { movie } }); // Navigate and pass movie data
+  };
 
   return (
     <>
@@ -49,44 +55,46 @@ export const Homme = () => {
         </div>
         <div className="scrollcards" ref={scrollContainerRef}>
           <div className="allcards">
-          {movies.length > 0 ? (
-          movies.filter(movie => movie.estados === 'Disponible').map(movie => (
-            <div className="infoContainer" key={movie._id}>
-              <div className="cards">
-                <img id='frontPage' src={movie.portada} alt={movie.nombre} />
-              </div>
-              <strong id='title__movie'>{movie.nombre}</strong>
-              <p id='genre'>{movie.genero}</p>
-            </div>
-          ))
-          ) : (
-            <p>No movies available</p>
-          )}
+            {movies.length > 0 ? (
+              movies.filter(movie => movie.estados === 'Disponible').map(movie => (
+                <div 
+                  className="infoContainer" 
+                  key={movie._id} 
+                  onClick={() => handleMovieClick(movie)} // Handle click
+                >
+                  <div className="cards">
+                    <img id='frontPage' src={movie.portada} alt={movie.nombre} />
+                  </div>
+                  <strong id='title__movie'>{movie.nombre}</strong>
+                  <p id='genre'>{movie.genero}</p>
+                </div>
+              ))
+            ) : (
+              <p>No movies available</p>
+            )}
           </div>
         </div>
         <div className="menuContainer">
           <img id='menu' src={menuPuntos} />
         </div>
-        <strong id='titleCommingSoon'>Comming soon</strong>
+        <strong id='titleCommingSoon'>Coming soon</strong>
         {movies.length > 0 ? (
           movies.filter(movie => movie.estados === 'Preventa').map(movie => (
-        <div className="commingSoonMoviesContainer" key={movie._id}>
-          <div className="commingSoonMovie">
-            <div className="imageContainer">
-            <img id='frontPageCommingSoon' src={movie.portada}/>
+            <div className="commingSoonMoviesContainer" key={movie._id}>
+              <div className="commingSoonMovie">
+                <div className="imageContainer">
+                  <img id='frontPageCommingSoon' src={movie.portada} />
+                </div>
+                <div className="containMovie">
+                  <strong id='titleMovie'>{movie.nombre}</strong>
+                  <p id='genreMovie'>{movie.genero}</p>
+                </div>
+              </div>
             </div>
-            <div className="containMovie">
-            <div className="containMovie">
-            <strong id='titleMovie'>{movie.nombre}</strong>
-            <p id='genreMovie'>{movie.genero}</p>
-              </div>
-              </div>
-          </div>
-        </div>
-        ))
-          ) : (
-            <p>No movies available</p>
-          )}
+          ))
+        ) : (
+          <p>No movies available</p>
+        )}
       </div>
       <footer className="footer__nav">
         <ul className="footer__bar">

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+import { useLocation } from 'react-router-dom'; // Import useLocation
 
 const UserSchema = new mongoose.Schema({
   name: { type: String, required: true },

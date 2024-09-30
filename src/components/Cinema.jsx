@@ -4,100 +4,57 @@ import zoom from '../../public/Cine-Club.jpg';
 import menu from '../../public/more-vertical.svg'
 import reproduce from '../../public/Polygon 1.svg'
 import caster from '../../public/Ellipse 208.svg'
+import { useLocation } from 'react-router-dom';
 
 export const Cinema = () => {
+  const location = useLocation();
+  const movie = location.state?.movie;
+console.log(movie)
   return (
     <>
-    <div className='mainContainer'>
+      <div className='mainContainerCinema'>
         <div className='container__header'>
           <div className="arrow__container">
             <a href="/homeapp">
-            <img id='arrow__image' src={flecha}/>
+              <img id='arrow__image' src={flecha} />
             </a>
           </div>
           <div className="title__container">
             <strong id='title'>Cinema Selection</strong>
           </div>
           <div className="menu_container">
-            <img id='image__menu' src={menu}/>
+            <img id='image__menu' src={menu} />
           </div>
         </div>
         <div className="imagecontainer">
-        <img id='image__front__page' src={zoom}/>
+          <img id='image__front__page' src={movie?.portada} alt={movie?.nombre} />
         </div>
         <div className="movie-card">
           <div className="movie-header">
-            Puss in boots the last wish
-            <button className="trailer-button"><img src={reproduce}/>Watch Trailer</button>
+            {movie?.nombre}
+            <button className="trailer-button"><img src={reproduce} />Watch Trailer</button>
           </div>
           <div className="movie-genre">
-            Action, Adventure
+            {movie?.genero}
           </div>
           <div className="movie-description">
-            Jake Sully and Ney'tiri have formed a family and are doing everything to stay together. However, they must leave their home and explore the regions of Pandora. When an ancient threat resurfaces, Jake must fight a difficult war against the humans.
+            {movie?.sinopsis}
           </div>
           <strong id='titleCast'>Cast</strong>
         </div>
-          <div className="movie-cast">
-          <div className="cast-member">
-            <img id='caster__image' src={caster}/>
-            </div>
-            <div className="info__caster">
-              <strong id="name__caster">Antonio Banderas</strong>
-              <span id="character__casting">Antonio Banderas</span>
-            </div>
-            <div className="cast-member">
-            <img id='caster__image' src={caster}/>
-            </div>
-            <div className="info__caster">
-            <strong id="name__caster">Antonio Banderas</strong>
-              <span id="character__casting">Antonio Banderas</span>
-            </div>
-            <div className="cast-member">
-            <img id='caster__image' src={caster}/>
-            </div>
-            <div className="info__caster">
-            <strong id="name__caster">Antonio Banderas</strong>
-              <span id="character__casting">Antonio Banderas</span>
-            </div>
-            <div className="cast-member">
-            <img id='caster__image' src={caster}/>
-            </div>
-            <div className="info__caster">
-            <strong id="name__caster">Antonio Banderas</strong>
-              <span id="character__casting">Antonio Banderas</span>
-            </div>
-            <div className="cast-member">
-            <img id='caster__image' src={caster}/>
-            </div>
-            <div className="info__caster">
-            <strong id="name__caster">Antonio Banderas</strong>
-              <span id="character__casting">Antonio Banderas</span>
-            </div>
-          </div>
-        <strong id='titleCinemaPlace'>Cinema</strong>
-        <div className="placesContainer">
-          <div className="places">
-            <div className="imageContainer">
-            <img id='frontPageCommingSoon' src={zoom}/>
-            </div>
-            <div className="containPlace">
-            <strong id='placeName'>Campuslands</strong>
-            <p id='ubicationPlace'>Zonza franca, torre </p>
-              </div>
-          </div>
-        </div>
-        </div>
-        <a href="/SeatBooking">
+
+      </div>
+      <a href="/SeatBooking">
         <footer className="footer__nav__cinema">
-        <ul className="footer__bar__cinema">
-          <li>
-            <strong id='title__footer'>Book now</strong>
-          </li>
-        </ul>
-      </footer>
-        </a>
+          <ul className="footer__bar__cinema">
+            <li>
+              <strong id='title__footer'>Book now</strong>
+            </li>
+          </ul>
+        </footer>
+      </a>
     </>
-  )
-}
+  );
+};
+
 export default Cinema;

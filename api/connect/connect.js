@@ -5,5 +5,7 @@ exports.connectMongodb = async()=>{
     const usuario = new MongoClient(url)
     await usuario.connect();
     const db = usuario.db('cineCampus');
+    console.log(db);
+    
     return db;
 }

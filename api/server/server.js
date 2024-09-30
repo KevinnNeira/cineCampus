@@ -1,5 +1,6 @@
 const {connectMongodb} = require('../connect/connect')
 const express = require('express');
+const bcrypt = require('bcrypt');
 const cors = require('cors');
 const user = express();
 
@@ -13,8 +14,43 @@ user.get('/getMovie', async (req, res) => {
     const db = await connectMongodb();
     const collection = db.collection('peliculas')
     let { accion } = req.query;
-    res.status(200).send(await collection.find().project().toArray())
+    return collection.findOne({ Username }).then(user => {
+        if (!user) {
+            return res.status(400).send({ message: 'Credenciales inválidas' });
+        }
+
+        // Comparar contraseña
+        return bcrypt.compare(Password, user.contraseña).then(isMatch => {
+            if (!isMatch) {
+                return res.status(400).send({ message: 'Credenciales inválidas' });
+            }
+            return res.status(200).send({ message: 'Inicio de sesión exitoso' });
+        });
+    });
+}).catch(error => {
+    console.error(error);
+    return res.status(500).send({ message: 'Error del servidor' });
 });
+
+
+user.post('/updateSeats', async (req, res) => {
+    const db = await connectMongodb();
+    const collection = db.collection('funciones');
+    const { selectedSeats } = req.body;
+
+    try {
+        await collection.updateMany(
+            { seatNumber: { $in: selectedSeats } },
+            { $set: { status: 'Reservado' } }
+        );
+
+        res.status(200).send({ message: 'Asientos actualizados' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Error al actualizar los asientos' });
+    }
+});
+
 user.delete('/:id', async(req,res)=>{
     const collection = await connectMongodb();
     let {id} = req.params;
@@ -48,7 +84,6 @@ user.post('/insertUser', express.json(), async (req, res) => {
     }
 });
 
-module.exports = user;
 user.get("/:_id", express.json(), async(req, res)=>{
     const db = await connectMongodb();
     const collection = db.collection('peliculas')

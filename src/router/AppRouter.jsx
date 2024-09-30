@@ -11,7 +11,7 @@ export const AppRouter = () => {
     return(
         <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/logIn' element={<LogIn/>}/>
+            <Route path='/:logIn' element={<LogIn/>}/>
             <Route path='/signUp' element={<SignUp/>}/>
             <Route path='/homeapp'element={<Homme/>}/>
             <Route path='/cinema/:_id' element={<Cinema/>}/>

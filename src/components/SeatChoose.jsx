@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import flecha from '../../public/arrow-right.svg';
-import menu from '../../public/more-vertical.svg'
-import bar from '../../public/Group 18102.svg'
-  
+import menu from '../../public/more-vertical.svg';
+import bar from '../../public/Group 18102.svg';
+
 export const SeatBooking = () => {
-  const [selectedSeat, setSelectedSeat] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedDay, setSelectedDay] = useState('Fri 17');
   const [selectedTime, setSelectedTime] = useState('13:00');
 
@@ -19,34 +19,71 @@ export const SeatBooking = () => {
   const reservedSeats = ['A1', 'B3', 'C4'];
 
   const handleSeatClick = (seat) => {
-    setSelectedSeat(seat);
+    setSelectedSeats(prevSelectedSeats => {
+      const updatedSeats = prevSelectedSeats.includes(seat)
+        ? prevSelectedSeats.filter(s => s !== seat) // Si ya está seleccionado, quitarlo
+        : [...prevSelectedSeats, seat]; // Si no, agregarlo
+      
+      // Actualizar la base de datos
+      updateSeatsInDatabase(updatedSeats);
+      return updatedSeats;
+    });
+  };
+
+  const updateSeatsInDatabase = async (seatsToUpdate) => {
+    try {
+      const response = await fetch('http://localhost:3000/updateSeats', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ selectedSeats: seatsToUpdate }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al actualizar los asientos');
+      }
+
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al actualizar los asientos'); // Considera usar un componente para mostrar errores
+    }
   };
 
   return (
     <>
-    <div className='container__header__seat'>
-          <div className="arrow__container">
+      <div className='container__header__seat'>
+        <div className="arrow__container">
           <a href="/cinema">
-            <img id='arrow__image__seat' src={flecha}/>
-            </a>          </div>
-          <div className="title__container">
-            <strong id='title__seat'>Cinema Selection</strong>
-            <img id='image__bar' src={bar}/>
-          </div>
-          <div className="menu_container">
-            <img id='image__menu__seat' src={menu}/>
-          </div>
+            <img id='arrow__image__seat' src={flecha} />
+          </a>
         </div>
-    <div className="seat-booking">
-      <SeatSelector seats={seats} reservedSeats={reservedSeats} selectedSeat={selectedSeat} onSeatClick={handleSeatClick} />
-      <DateSelector selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
-      <TimeSelector selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
-      <TicketPrice price="$24.99" />
-    </div>
+        <div className="title__container">
+          <strong id='title__seat'>Cinema Selection</strong>
+          <img id='image__bar' src={bar} />
+        </div>
+        <div className="menu_container">
+          <img id='image__menu__seat' src={menu} />
+        </div>
+      </div>
+      <div className="seat-booking">
+        <SeatSelector
+          seats={seats}
+          reservedSeats={reservedSeats}
+          selectedSeats={selectedSeats}
+          onSeatClick={handleSeatClick}
+        />
+        <DateSelector selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+        <TimeSelector selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
+        <TicketPrice price={`$${(selectedSeats.length * 24.99).toFixed(2)}`} />
+      </div>
     </>
   );
 };
-const SeatSelector = ({ seats, reservedSeats, selectedSeat, onSeatClick }) => {
+
+const SeatSelector = ({ seats, reservedSeats, selectedSeats, onSeatClick }) => {
   return (
     <div className="seat-selector">
       {seats.map((row, rowIndex) => (
@@ -54,7 +91,7 @@ const SeatSelector = ({ seats, reservedSeats, selectedSeat, onSeatClick }) => {
           {row.map((seat) => (
             <button
               key={seat}
-              className={`seat ${reservedSeats.includes(seat) ? 'reserved' : selectedSeat === seat ? 'selected' : 'available'}`}
+              className={`seat ${reservedSeats.includes(seat) ? 'reserved' : selectedSeats.includes(seat) ? 'selected' : 'available'}`}
               onClick={() => !reservedSeats.includes(seat) && onSeatClick(seat)}
               disabled={reservedSeats.includes(seat)}
             >
@@ -66,6 +103,7 @@ const SeatSelector = ({ seats, reservedSeats, selectedSeat, onSeatClick }) => {
     </div>
   );
 };
+
 const DateSelector = ({ selectedDay, setSelectedDay }) => {
   const days = ['Fri 17', 'Sat 18', 'Sun 19', 'Mon 20', 'Tue 21'];
 
@@ -83,6 +121,7 @@ const DateSelector = ({ selectedDay, setSelectedDay }) => {
     </div>
   );
 };
+
 const TimeSelector = ({ selectedTime, setSelectedTime }) => {
   const times = ['13:00', '15:45', '18:50', '20:30'];
 
@@ -100,6 +139,7 @@ const TimeSelector = ({ selectedTime, setSelectedTime }) => {
     </div>
   );
 };
+
 const TicketPrice = ({ price }) => {
   return (
     <div className="ticket-price">

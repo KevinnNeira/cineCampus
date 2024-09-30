@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import star from '../../public/Star.svg';
+import star from '../../public/Image__icon.jpg'
 import { useNavigate } from 'react-router-dom';
 
 export const SignUp = () => {

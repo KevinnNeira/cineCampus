@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Ilustration from '../../public/Illustration.svg'
+import Ilustration from '../../public/Image__icon.jpg'
 
 export const Home = () => {
     
@@ -12,8 +12,8 @@ export const Home = () => {
                 <img src= {Ilustration} />
             </div>
             <div className="section__text">
-                <h1>Explore the app</h1>
-                <small>Now your finances are in one place and always under control</small>
+                <h1>Cine Campus</h1>
+                <small>Disfruta de tus peliculas favoritas en el mejor lugar</small>
             </div>
         </section>
         <section className="section__button">

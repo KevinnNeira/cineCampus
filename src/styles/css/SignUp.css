@@ -19,6 +19,12 @@ header {
     /* background: red; */
 }
 
+#imagee{
+    position: absolute;
+    margin-top: 2vh;
+    width: 70px;
+}
+
 .header__logo {
     width: 100%;
     display: flex;

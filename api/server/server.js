@@ -36,15 +36,15 @@ user.post('/insertUser', express.json(), async (req, res) => {
     const newUser = {
         Username,
         Email,
-        Password // Considera encriptar la contraseña
+        Password
     };
 
     try {
         const result = await collection.insertOne(newUser);
-        res.status(201).json(result); // Devolver un JSON
+        res.status(201).json(result);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "User not created" }); // Devolver un JSON en caso de error
+        res.status(500).json({ message: "User not created" });
     }
 });
 

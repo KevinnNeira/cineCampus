@@ -1,36 +1,85 @@
-import React from 'react'
-import star from '../../public/Star.svg'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import star from '../../public/Star.svg';
+import { useNavigate } from 'react-router-dom';
 
 export const SignUp = () => {
     const navigate = useNavigate();
-    const route = async (e) => {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        navigate('/signUp');
-    }
-  return (
-    <>
-    <header>
-        <div className="header__logo">
-            <img src={ star }/>
-        </div>
-    </header>
-    <main>
-    <section class="section__form">
-            <h1>Create account</h1>
-            <form action="" method="post" class="login">
-                <label for="">Username</label>
-                <input type="text" placeholder="Your username"/>
-                <label for="">Email</label>
-                <input type="email" placeholder="Your email"/>
-                <label for="">Password</label>
-                <input type="password"/>
-                <span>I accept the terms and privacy policy</span>
-                <input type="submit" value="Log in"/>
-            </form>
-        </section>
-    </main>
-    </>
-  )
-}
+        
+        const userData = {
+            Username: username,
+            Email: email,
+            Password: password,
+        };
+            const response = await fetch('http://localhost:3000/insertUser', { // Cambia la URL aquí
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('User created:', data);
+                navigate('/login'); // Redirige a otra página si el registro es exitoso
+            } else {
+                const errorData = await response.json();
+                console.error('Error:', errorData.message);
+                alert(errorData.message); // Mostrar mensaje de error
+            }
+
+    };
+
+    return (
+        <>
+            <header>
+                <div className="header__logo">
+                    <img src={star} alt="Logo" />
+                </div>
+            </header>
+            <main>
+                <section className="section__form">
+                    <h1>Create account</h1>
+                    <form onSubmit={handleSubmit} className="login">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <span>I accept the terms and privacy policy</span>
+                        <input type="submit" value="Create account" />
+                    </form>
+                </section>
+            </main>
+        </>
+    );
+};
+
 export default SignUp;

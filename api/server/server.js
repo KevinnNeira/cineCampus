@@ -23,15 +23,30 @@ user.delete('/:id', async(req,res)=>{
         res.status(404).send({message: "User not found"})
     }
 })
-user.post('/', express.json(), async(req, res)=>{
-    const collection = await connectMongodb();
-    let data = req.body;
-    try{
-        res.status(400).send(await collection.insertOne(data))
-    }catch{
-        res.status(204).send({message: "User not created"})
+user.post('insertUser', express.json(), async (req, res) => {
+    const collection = db.collection('usuarios')
+    const { Username, Email, Password } = req.body;
+
+    if (!Username || !Email || !Password) {
+        return res.status(400).json({ message: "Username, Email and Password are required" });
     }
-})
+
+    const newUser = {
+        Username,
+        Email,
+        Password // Considera encriptar la contraseña
+    };
+
+    try {
+        const result = await collection.insertOne(newUser);
+        res.status(201).json(result); // Devolver un JSON
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "User not created" }); // Devolver un JSON en caso de error
+    }
+});
+
+module.exports = user;
 user.put("/:id", express.json(), async(req, res)=>{
     const collection = await connectMongodb();
     let data = req.body;

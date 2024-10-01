@@ -21,10 +21,9 @@ export const SeatBooking = () => {
   const handleSeatClick = (seat) => {
     setSelectedSeats(prevSelectedSeats => {
       const updatedSeats = prevSelectedSeats.includes(seat)
-        ? prevSelectedSeats.filter(s => s !== seat) // Si ya está seleccionado, quitarlo
-        : [...prevSelectedSeats, seat]; // Si no, agregarlo
+        ? prevSelectedSeats.filter(s => s !== seat)
+        : [...prevSelectedSeats, seat];
       
-      // Actualizar la base de datos
       updateSeatsInDatabase(updatedSeats);
       return updatedSeats;
     });
@@ -48,7 +47,7 @@ export const SeatBooking = () => {
       console.log(data.message);
     } catch (error) {
       console.error('Error:', error);
-      alert('Error al actualizar los asientos'); // Considera usar un componente para mostrar errores
+      alert('Error al actualizar los asientos');
     }
   };
 

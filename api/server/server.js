@@ -1,6 +1,5 @@
 const {connectMongodb} = require('../connect/connect')
 const express = require('express');
-const bcrypt = require('bcrypt');
 const cors = require('cors');
 const user = express();
 
@@ -14,43 +13,8 @@ user.get('/getMovie', async (req, res) => {
     const db = await connectMongodb();
     const collection = db.collection('peliculas')
     let { accion } = req.query;
-    return collection.findOne({ Username }).then(user => {
-        if (!user) {
-            return res.status(400).send({ message: 'Credenciales inválidas' });
-        }
-
-        // Comparar contraseña
-        return bcrypt.compare(Password, user.contraseña).then(isMatch => {
-            if (!isMatch) {
-                return res.status(400).send({ message: 'Credenciales inválidas' });
-            }
-            return res.status(200).send({ message: 'Inicio de sesión exitoso' });
-        });
-    });
-}).catch(error => {
-    console.error(error);
-    return res.status(500).send({ message: 'Error del servidor' });
+    res.status(200).send(await collection.find().project().toArray())
 });
-
-
-user.post('/updateSeats', async (req, res) => {
-    const db = await connectMongodb();
-    const collection = db.collection('funciones');
-    const { selectedSeats } = req.body;
-
-    try {
-        await collection.updateMany(
-            { seatNumber: { $in: selectedSeats } },
-            { $set: { status: 'Reservado' } }
-        );
-
-        res.status(200).send({ message: 'Asientos actualizados' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ message: 'Error al actualizar los asientos' });
-    }
-});
-
 user.delete('/:id', async(req,res)=>{
     const collection = await connectMongodb();
     let {id} = req.params;
@@ -60,6 +24,32 @@ user.delete('/:id', async(req,res)=>{
         res.status(404).send({message: "User not found"})
     }
 })
+user.post('/loginUser', async (req, res) => {
+    const db = await connectMongodb();
+    const collection = db.collection('usuarios'); // Cambia 'usuarios' por el nombre de tu colección
+
+    const { Username, Password } = req.body;
+
+    try {
+        // Buscar usuario por nombre de usuario
+        const user = await collection.findOne({ Username });
+        if (!user) {
+            return res.status(400).send({ message: 'Credenciales inválidas' });
+        }
+
+        // Verificar la contraseña
+        const isMatch = await bcrypt.compare(Password, user.Password);
+        if (!isMatch) {
+            return res.status(400).send({ message: 'Credenciales inválidas' });
+        }
+
+        // Si las credenciales son válidas, envía una respuesta exitosa
+        res.status(200).send({ message: 'Inicio de sesión exitoso' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Error del servidor' });
+    }
+});
 user.post('/insertUser', express.json(), async (req, res) => {
     const db = await connectMongodb();
     const collection = db.collection('usuarios')
@@ -83,7 +73,6 @@ user.post('/insertUser', express.json(), async (req, res) => {
         res.status(500).json({ message: "User not created" });
     }
 });
-
 user.get("/:_id", express.json(), async(req, res)=>{
     const db = await connectMongodb();
     const collection = db.collection('peliculas')

@@ -7,10 +7,10 @@ import Home from '../../public/Frame 3.svg';
 import zoom from '../../public/Frame 4.svg';
 import ticket from '../../public/Frame 5.svg';
 import profile from '../../public/Frame 6.svg';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 export const Homme = () => {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
   const scrollContainerRef = useRef(null);
 
@@ -28,7 +28,7 @@ export const Homme = () => {
   }, [movies]);
 
   const handleMovieClick = (movie) => {
-    navigate(`/cinema/${movie._id}`, { state: { movie } }); // Navigate and pass movie data
+    navigate(`/cinema/${movie._id}`, { state: { movie } });
   };
 
   return (
@@ -60,7 +60,7 @@ export const Homme = () => {
                 <div 
                   className="infoContainer" 
                   key={movie._id} 
-                  onClick={() => handleMovieClick(movie)} // Handle click
+                  onClick={() => handleMovieClick(movie)}
                 >
                   <div className="cards">
                     <img id='frontPage' src={movie.portada} alt={movie.nombre} />

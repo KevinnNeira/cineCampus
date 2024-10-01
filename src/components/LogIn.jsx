@@ -25,12 +25,11 @@ export const LogIn = () => {
         if (response.ok) {
             const data = await response.json();
             console.log('Login successful:', data);
-            // Aquí puedes almacenar el token o cualquier dato que necesites
-            navigate('/dashboard'); // Redirige a la página de dashboard o inicio
+            navigate('/dashboard');
         } else {
             const errorData = await response.json();
             console.error('Error:', errorData.message);
-            alert(errorData.message); // Considera usar un componente para mostrar errores
+            alert(errorData.message);
         }
     };
 

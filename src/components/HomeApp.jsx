@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import image__profile from '../../public/profileImage.svg';
 import campana from '../../public/Campana.svg';
+import caster from '../../public/profileImage.svg'
 import lupa from '../../public/lupa.png';
 import menuPuntos from '../../public/menu.svg';
 import Home from '../../public/Frame 3.svg';
@@ -96,6 +97,46 @@ export const Homme = () => {
           <p>No movies available</p>
         )}
       </div>
+      <div className="movie-cast">
+          <div className="cast-member">
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+              <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
+            </div>
+            <div className="cast-member">
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
+            </div>
+            <div className="cast-member">
+              <span>Antonio Banderas</span>
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
+            </div>
+            <div className="cast-member">
+              <span>Salma Hayek</span>
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
+            </div>
+            <div className="cast-member">
+              <span>Harvey Guillén</span>
+            <img id='caster__image' src={caster}/>
+            </div>
+            <div className="info__caster">
+            <strong id="name__caster">Antonio Banderas</strong>
+              <span id="character__casting">Antonio Banderas</span>
+            </div>
+          </div>
       <footer className="footer__nav">
         <ul className="footer__bar">
           <li>

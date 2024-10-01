@@ -3,12 +3,10 @@ const express = require('express');
 const cors = require('cors');
 const user = express();
 
-// Habilitar CORS para permitir solicitudes desde tu frontend (React)
 user.use(cors({
-  origin: 'http://localhost:5173' // Asegúrate de que este sea el puerto de tu frontend
+  origin: 'http://localhost:5173'
 }));
 
-// Ruta para obtener películas
 user.get('/getMovie', async (req, res) => {
     const db = await connectMongodb();
     const collection = db.collection('peliculas')
@@ -26,24 +24,19 @@ user.delete('/:id', async(req,res)=>{
 })
 user.post('/loginUser', async (req, res) => {
     const db = await connectMongodb();
-    const collection = db.collection('usuarios'); // Cambia 'usuarios' por el nombre de tu colección
+    const collection = db.collection('usuarios');
 
     const { Username, Password } = req.body;
 
     try {
-        // Buscar usuario por nombre de usuario
         const user = await collection.findOne({ Username });
         if (!user) {
             return res.status(400).send({ message: 'Credenciales inválidas' });
         }
-
-        // Verificar la contraseña
         const isMatch = await bcrypt.compare(Password, user.Password);
         if (!isMatch) {
             return res.status(400).send({ message: 'Credenciales inválidas' });
         }
-
-        // Si las credenciales son válidas, envía una respuesta exitosa
         res.status(200).send({ message: 'Inicio de sesión exitoso' });
     } catch (error) {
         console.error(error);
@@ -73,6 +66,50 @@ user.post('/insertUser', express.json(), async (req, res) => {
         res.status(500).json({ message: "User not created" });
     }
 });
+user.post('/reserveSeats', express.json(), async (req, res) => {
+    const { pelicula_id, fecha, hora_inicio, asientosSeleccionados } = req.body;
+    if (!pelicula_id || !fecha || !hora_inicio || !asientosSeleccionados) {
+        return res.status(400).json({ message: "pelicula_id, fecha, hora_inicio, and asientosSeleccionados are required" });
+    }
+
+    try {
+        await this.open();
+        const collectionTicket = this.db.collection("funciones");
+        let peliculaObjectId;
+        try {
+            peliculaObjectId = new ObjectId(pelicula_id);
+        } catch (error) {
+            return res.status(400).json({ message: "ID de película no válido." });
+        }
+        let funcion = await collectionTicket.findOne({
+            pelicula_id: peliculaObjectId,
+            fecha: new Date(fecha),
+            hora_inicio: hora_inicio
+        });
+        if (!funcion) {
+            return res.status(404).json({ message: "Función no encontrada." });
+        }
+        let asientosDisponibles = funcion.asientos.filter(asiento =>
+            asientosSeleccionados.includes(asiento.asiento) && asiento.estado === "Libre"
+        );
+        if (asientosDisponibles.length !== asientosSeleccionados.length) {
+            return res.status(400).json({ message: "Los asientos se encuentran reservados." });
+        }
+
+        await collectionTicket.updateMany(
+            { _id: funcion._id, "asientos.asiento": { $in: asientosSeleccionados } },
+            { $set: { "asientos.$[elem].estado": "Reservado" } },
+            { arrayFilters: [{ "elem.asiento": { $in: asientosSeleccionados } }] }
+        );
+        funcion = await collectionTicket.findOne({ _id: funcion._id });
+
+        return res.status(200).json({ message: "Compra exitosa", funcion });
+    } catch (error) {
+        console.error("Error al comprar el ticket:", error);
+        return res.status(500).json({ message: "Error al procesar la reserva" });
+    }
+});
+
 user.get("/:_id", express.json(), async(req, res)=>{
     const db = await connectMongodb();
     const collection = db.collection('peliculas')

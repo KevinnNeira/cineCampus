@@ -7,6 +7,8 @@ export const SeatBooking = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedDay, setSelectedDay] = useState('Fri 17');
   const [selectedTime, setSelectedTime] = useState('13:00');
+  const pelicula_id = "YOUR_MOVIE_ID"; // Replace with the actual movie ID
+  const fecha = new Date(); // You can format this based on the selectedDay
 
   const seats = [
     ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
@@ -23,31 +25,32 @@ export const SeatBooking = () => {
       const updatedSeats = prevSelectedSeats.includes(seat)
         ? prevSelectedSeats.filter(s => s !== seat)
         : [...prevSelectedSeats, seat];
-      
-      updateSeatsInDatabase(updatedSeats);
+
       return updatedSeats;
     });
   };
 
-  const updateSeatsInDatabase = async (seatsToUpdate) => {
+  const handleReserveSeats = async () => {
+    const hora_inicio = selectedTime; // Using the selected time
+
     try {
-      const response = await fetch('http://localhost:3000/updateSeats', {
+      const response = await fetch('http://localhost:3000/reserveSeats', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ selectedSeats: seatsToUpdate }),
+        body: JSON.stringify({ pelicula_id, fecha, hora_inicio, asientosSeleccionados: selectedSeats }),
       });
 
       if (!response.ok) {
-        throw new Error('Error al actualizar los asientos');
+        throw new Error('Error al procesar la reserva');
       }
 
       const data = await response.json();
-      console.log(data.message);
+      alert(data.message); // Show success message
     } catch (error) {
       console.error('Error:', error);
-      alert('Error al actualizar los asientos');
+      alert('Error al procesar la reserva');
     }
   };
 
@@ -56,15 +59,15 @@ export const SeatBooking = () => {
       <div className='container__header__seat'>
         <div className="arrow__container">
           <a href="/cinema">
-            <img id='arrow__image__seat' src={flecha} />
+            <img id='arrow__image__seat' src={flecha} alt="Back" />
           </a>
         </div>
         <div className="title__container">
           <strong id='title__seat'>Cinema Selection</strong>
-          <img id='image__bar' src={bar} />
+          <img id='image__bar' src={bar} alt="Bar" />
         </div>
         <div className="menu_container">
-          <img id='image__menu__seat' src={menu} />
+          <img id='image__menu__seat' src={menu} alt="Menu" />
         </div>
       </div>
       <div className="seat-booking">
@@ -77,6 +80,9 @@ export const SeatBooking = () => {
         <DateSelector selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
         <TimeSelector selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
         <TicketPrice price={`$${(selectedSeats.length * 24.99).toFixed(2)}`} />
+        <button className="buy-button" onClick={handleReserveSeats}>
+          Buy ticket
+        </button>
       </div>
     </>
   );
@@ -144,7 +150,6 @@ const TicketPrice = ({ price }) => {
     <div className="ticket-price">
       <p>Price</p>
       <h5>{price}</h5>
-      <button className="buy-button">Buy ticket</button>
     </div>
   );
 };

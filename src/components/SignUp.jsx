@@ -31,7 +31,7 @@ export const SignUp = () => {
         } else {
             const errorData = await response.json();
             console.error('Error:', errorData.message);
-            alert(errorData.message); // Considera usar un componente para mostrar errores
+            alert(errorData.message);
         }
     };
 

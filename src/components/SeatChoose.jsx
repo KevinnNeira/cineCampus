@@ -7,8 +7,8 @@ export const SeatBooking = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedDay, setSelectedDay] = useState('Fri 17');
   const [selectedTime, setSelectedTime] = useState('13:00');
-  const pelicula_id = "YOUR_MOVIE_ID"; // Replace with the actual movie ID
-  const fecha = new Date(); // You can format this based on the selectedDay
+  const pelicula_id = "66d05a83b06d8dfb19429685";
+  const fecha = new Date();
 
   const seats = [
     ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
@@ -31,7 +31,7 @@ export const SeatBooking = () => {
   };
 
   const handleReserveSeats = async () => {
-    const hora_inicio = selectedTime; // Using the selected time
+    const hora_inicio = selectedTime;
 
     try {
       const response = await fetch('http://localhost:3000/reserveSeats', {
@@ -47,7 +47,7 @@ export const SeatBooking = () => {
       }
 
       const data = await response.json();
-      alert(data.message); // Show success message
+      alert(data.message);
     } catch (error) {
       console.error('Error:', error);
       alert('Error al procesar la reserva');
